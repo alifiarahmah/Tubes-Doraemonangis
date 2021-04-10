@@ -3,6 +3,7 @@
 ## daftar fungsi/prosedur yang bisa dipake ##
 # readCSV(csv_file: string) -> [header: array of string, datas: array of array]
 	# baca file csv dari csv_file
+	# contoh: readCSV("user.csv") -> ['nama, kelas'], [['Anto','XII MIPA 5'],['Alex','X IPS']]
 # addCSVdata(csv_file: string, inputs: array of string)
 	# nambah data baru ke csv, inputs dalam bentuk array
 # editCSVdata(csv_file: string, idx: integer, col: integer, val)
@@ -12,13 +13,15 @@
 # getCol(csv_file: string, col_name: string) -> integer
 	# return col ke-berapa dari nama kolom dalam csv, biar enak aja
 	# biar enak buat edit data
+	# contoh: getCol("user.csv", "alamat") -> 3
 # getRow(csv_file: string, col_name: string) -> integer
 	# return row ke-berapa dari id dalam csv, biar enak aja
 	# biar enak buat edit data
+	# contoh: getRow("consumable.csv", "C1") -> 0
 
 # FUNGSI PENUNJANG, CUMA BUAT FUNGSI DALAM FUNGSI
 
-def convDataToString(header, datas):
+def convDataToString(header, datas): # -> string
 	# convert data ke string untuk dimasukkan ke csv
 	str_data = ",".join(header) + "\n"
 	for data in datas:
@@ -46,7 +49,7 @@ def dataToInt(csv_file, arr):  # -> array mix
 			arr[i] = int(arr[i])
 	return arr
 
-def intIdxList(csv_file):
+def intIdxList(csv_file): # -> array of integer
 	# penunjang fungsi dataToInt
 	if csv_file == "user.csv":
 		return [0]
@@ -58,7 +61,7 @@ def intIdxList(csv_file):
 
 # FUNGSI PANGGILABLE BUAT GAMPANGIN AJA
 
-def getCol(csv_file, col_name):
+def getCol(csv_file, col_name): # -> integer
 	# return col ke-berapa dari nama kolom + csv, biar enak aja
 	# biar enak buat edit data
 	header = readCSV(csv_file)[0]
@@ -66,7 +69,7 @@ def getCol(csv_file, col_name):
 		if header[i] == col_name:
 			return i
 
-def getRow(csv_file, row_id):
+def getRow(csv_file, row_id): # -> integer
 	# return col ke-berapa dari judul kolom + csv, biar enak aja
 	# biar enak buat edit data
 	datas = readCSV(csv_file)[1]
@@ -77,7 +80,7 @@ def getRow(csv_file, row_id):
 
 # FUNGSI UTAMA
 
-def readCSV(csv_file):
+def readCSV(csv_file):  # -> [header: array of string, datas: array of array]
 	# baca data mentah dari csv
 	f = open(csv_file,"r")
 	raw_lines = f.readlines()
