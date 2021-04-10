@@ -5,6 +5,12 @@ header = ""
 datas = []
 csv_file = "gadget.csv"
 int_idx = [3,5]
+# readCSV(csv_file: string)
+  # baca file csv dari csv_file
+# addCSVdata(csv_file: string, inputs: array of string)
+  # nambah data baru ke csv, inputan dimasukin dalam array
+# editCSVdata(csv_file: string, )
+  # edit 
 
 # KUMPULAN FUNGSI PENUNJANG
 
@@ -57,10 +63,10 @@ def readCSV(csv_file):
 		array_of_data = dataToInt(array_of_data)
 		datas.append(array_of_data)
 
-def addCSVdata(inputs):
+def addCSVdata(csv_file, inputs):
 	datas.append(inputs)
 
-def editCSVdata(idx, col, val):
+def editCSVdata(csv_file, idx, col, val):
 	# modifikasi data
 	datas[idx][col] = val
 
