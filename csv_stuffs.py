@@ -1,23 +1,31 @@
-# Library buatan sendiri >:(
-
+"""
 ## daftar fungsi/prosedur yang bisa dipake ##
-# readCSV(csv_file: string) -> [header: array of string, datas: array of array]
-	# baca file csv dari csv_file
-	# contoh: readCSV("user.csv") -> ['nama, kelas'], [['Anto','XII MIPA 5'],['Alex','X IPS']]
-# addCSVdata(csv_file: string, inputs: array of string)
-	# nambah data baru ke csv, inputs dalam bentuk array
-# editCSVdata(csv_file: string, idx: integer, col: integer, val)
-	# edit data berdasar idx dan col-nya dalam csv
-# saveCSV(header: array of string, datas: array of terserah, csv_file: string)
-	# menyimpan header+data dalam csv
-# getCol(csv_file: string, col_name: string) -> integer
-	# return col ke-berapa dari nama kolom dalam csv, biar enak aja
-	# biar enak buat edit data
-	# contoh: getCol("user.csv", "alamat") -> 3
-# getRow(csv_file: string, col_name: string) -> integer
-	# return row ke-berapa dari id dalam csv, biar enak aja
-	# biar enak buat edit data
-	# contoh: getRow("consumable.csv", "C1") -> 0
+readCSV(csv_file: string) -> [header: array of string, datas: array of array]
+	baca file csv dari csv_file
+	contoh: readCSV("user.csv") -> ['nama, kelas'], [['Anto','XII MIPA 5'],['Alex','X IPS']]
+
+addCSVdata(csv_file: string, inputs: array of string)
+	nambah data baru ke csv, inputs dalam bentuk array
+
+readCSVdata(csv_file: string, idx: integer, col: integer) -> string
+	baca data berdasar idx dan col-nya dalam csv
+
+editCSVdata(csv_file: string, idx: integer, col: integer, val)
+	edit data berdasar idx dan col-nya dalam csv
+
+saveCSV(header: array of string, datas: array of terserah, csv_file: string)
+	menyimpan header+data dalam csv
+
+getCol(csv_file: string, col_name: string) -> integer
+	return col ke-berapa dari nama kolom dalam csv, kalau tidak ada return -1
+	biar enak buat edit data
+	contoh: getCol("user.csv", "alamat") -> 3
+
+getRow(csv_file: string, col_name: string) -> integer
+	return row ke-berapa dari id dalam csv, kalau tidak ada return -1
+	biar enak buat edit data
+	contoh: getRow("consumable.csv", "C1") -> 0
+"""
 
 # FUNGSI PENUNJANG, CUMA BUAT FUNGSI DALAM FUNGSI
 
@@ -44,7 +52,7 @@ def stringSplitStrip(string, delimiter):  # -> array of string
 
 def dataToInt(csv_file, arr):  # -> array mix
 	# ubah tipe data yang idxnya di arr jadi integer
-	for i in range(6):
+	for i in range(lenCol(csv_file)):
 		if i in intIdxList(csv_file):
 			arr[i] = int(arr[i])
 	return arr
@@ -57,25 +65,42 @@ def intIdxList(csv_file): # -> array of integer
 		return [3,5]
 	elif csv_file == "consumable.csv":
 		return [3]
-	
+
+def lenCol(csv_file):
+	if (csv_file == "user.csv") | (csv_file == "gadget.csv"):
+		return 6
+	elif (csv_file == "consumable.csv") | (csv_file == "gadget_borrow_history.csv"):
+		return 5
+	elif (csv_file == "consumable_history.csv") | (csv_file == "gadget_return_history.csv"):
+		return 4
 
 # FUNGSI PANGGILABLE BUAT GAMPANGIN AJA
 
+def readCSVdata(csv_file, idx, col):
+	datas = readCSV(csv_file)[1]
+	return datas[idx][col]
+
 def getCol(csv_file, col_name): # -> integer
-	# return col ke-berapa dari nama kolom + csv, biar enak aja
+	# return col ke-berapa dari nama kolom + csv
 	# biar enak buat edit data
 	header = readCSV(csv_file)[0]
-	for i in range(len(header)):
-		if header[i] == col_name:
-			return i
+	try:
+		for i in range(len(header)):
+			if header[i] == col_name:
+				return i
+	except:
+		return -1
 
 def getRow(csv_file, row_id): # -> integer
-	# return col ke-berapa dari judul kolom + csv, biar enak aja
+	# return row ke-berapa dari id dalam csv
 	# biar enak buat edit data
 	datas = readCSV(csv_file)[1]
-	for i in range(len(datas)):
-		if datas[i][0] == row_id:
-			return i
+	try:
+		for i in range(len(datas)):
+			if datas[i][0] == row_id:
+				return i
+	except:
+		return -1
 
 
 # FUNGSI UTAMA

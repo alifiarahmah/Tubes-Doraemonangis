@@ -1,5 +1,5 @@
 # maaf kalo gagal paham soal github :)
-from functions import readCSV
+from csv_stuffs import readCSV
 
 # FUNGSI UTAMA
 
