@@ -26,7 +26,7 @@ def register(role): # -> ()
             reg_alamat = input("Masukkan alamat: ")
 
         # buka data, pisahin header dan isi
-        data = readCSV("D:\\STEI ITB\\Semester 2\\MoonIF\\IF\\tubes2\\user.csv")
+        data = readCSV("user.csv")
         database = data[1]
         header = data[0]
 
@@ -38,7 +38,7 @@ def register(role): # -> ()
         database += [reg_array]
 
         # save data yang baru
-        saveCSV(header, database, "D:\\STEI ITB\\Semester 2\\MoonIF\\IF\\tubes2\\user.csv")
+        saveCSV(header, database, "user.csv")
 
         print("Registrasi berhasil dilakukan!")
         print()
@@ -54,7 +54,7 @@ def register(role): # -> ()
 def check_regis(reg_username): # -> bool
 
     # buka data, cuma perlu bagian isi
-    data = readCSV("D:\\STEI ITB\\Semester 2\\MoonIF\\IF\\tubes2\\user.csv")
+    data = readCSV("user.csv")
     database = data[1]
 
     # indeks kolom username = 1, biar enak liatnya
