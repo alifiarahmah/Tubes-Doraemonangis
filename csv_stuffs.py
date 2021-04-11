@@ -3,6 +3,8 @@
 readCSV(csv_file: string) -> [header: array of string, datas: array of array]
 	baca file csv dari csv_file
 	contoh: readCSV("user.csv") -> ['nama, kelas'], [['Anto','XII MIPA 5'],['Alex','X IPS']]
+		ambil headernya aja -> readCSV("user.csv")[0]
+		ambil datanya aja -> readCSV("user.csv")[1]
 
 addCSVdata(csv_file: string, inputs: array of string)
 	nambah data baru ke csv, inputs dalam bentuk array
@@ -17,12 +19,12 @@ saveCSV(header: array of string, datas: array of terserah, csv_file: string)
 	menyimpan header+data dalam csv
 
 getCol(csv_file: string, col_name: string) -> integer
-	return col ke-berapa dari nama kolom dalam csv, kalau tidak ada return -1
+	return col ke-berapa dari nama kolom dalam csv, kalau tidak ada return None
 	biar enak buat edit data
 	contoh: getCol("user.csv", "alamat") -> 3
 
 getRow(csv_file: string, col_name: string) -> integer
-	return row ke-berapa dari id dalam csv, kalau tidak ada return -1
+	return row ke-berapa dari id dalam csv, kalau tidak ada return None
 	biar enak buat edit data
 	contoh: getRow("consumable.csv", "C1") -> 0
 """
@@ -89,7 +91,7 @@ def getCol(csv_file, col_name): # -> integer
 			if header[i] == col_name:
 				return i
 	except:
-		return -1
+		return None
 
 def getRow(csv_file, row_id): # -> integer
 	# return row ke-berapa dari id dalam csv
@@ -100,7 +102,7 @@ def getRow(csv_file, row_id): # -> integer
 			if datas[i][0] == row_id:
 				return i
 	except:
-		return -1
+		return None
 
 
 # FUNGSI UTAMA
