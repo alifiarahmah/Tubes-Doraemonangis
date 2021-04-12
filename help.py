@@ -1,0 +1,35 @@
+# ini agak self explanatory, nguli juga, apa ada cara lain yg lebih efektif?
+
+def help(role):
+    if (role == "Admin"):
+        print("=========================== HELP ===========================")
+        print("register         : Untuk registrasi user baru.")
+        print("login            : Untuk masuk ke dalam aplikasi.")
+        print("carirarity       : Untuk mencari gadget berdasarkan rarity.")
+        print("caritahun        : Untuk mencari gadget berdasarkan tahun ditemukan.")
+        print("tambahitem       : Untuk menambahkan item ke dalam inventori.")
+        print("hapusitem        : Untuk menghapus gadget dan comsumable.")
+        print("ubahjumlah       : Untuk mengubah jumlah gadget dan consumable.")
+        print("riwayatpinjam    : Untuk melihat riwayat peminjaman gadget.")
+        print("riwayatkembali   : Untuk melihat riwayat pengembalian gadget.")
+        print("riwayatambil     : Untuk melihat riwayat pengambilan consumable.")
+        print("savedata         : Untuk menyimpan perubahan data.")
+        print("help             : Untuk memberikan panduan penggunaan sistem.")
+        print("exit             : Untuk keluar dari aplikasi.")
+        print()
+    elif (role == "User"):
+        print("======================== HELP ========================")
+        print("login        : Untuk masuk ke dalam aplikasi.")
+        print("carirarity   : Untuk mencari gadget berdasarkan rarity.")
+        print("caritahun    : Untuk mencari gadget berdasarkan tahun ditemukan.")
+        print("pinjam       : Untuk melakukan peminjaman gadget.")
+        print("kembalikan   : Untuk melakukan pengembalian gadget.")
+        print("minta        : Untuk meminta consumable yang tersedia.")
+        print("savedata     : Untuk menyimpan perubahan data.")
+        print("help         : Untuk memberikan panduan penggunaan sistem.")
+        print("exit         : Untuk keluar dari aplikasi.")    
+        print()
+    else: # role == "" 
+        print("===================== HELP =====================")
+        print("login            : Untuk masuk ke dalam aplikasi")   
+        print()
