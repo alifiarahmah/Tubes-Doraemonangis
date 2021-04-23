@@ -1,3 +1,6 @@
+from save import save
+from save import nosave
+
 def exit():
 
 	ans = str(input("Apakah anda mau melakukan penyimpanan file yang sudah diubah? (y/n) "))
