@@ -1,41 +1,43 @@
 import os
-from csv_stuffs import saveCSV 
+from load import copas
+from load import setupFile
 
-# class object buat nyimpen data yang mau disave (dipakai diluar file ini)
-class save_data_class(): 
-	def __init__(self, header, datas, csv_file):
-		self.header = header
-		self.datas = datas
-		self.csv_file = csv_file
-
-	
-def save(header, datas, csv_file):
-	if ((header == "") and (datas == "") and (csv_file == "")):
-		print("Tidak ada perubahan yang perlu disimpan")
-		return None
-	# else
+def save():
+	# fungsi save, untuk ditengah program ataupun pada saat exit (jika dipilih yes)
 	ans = str(input("Apakah anda ingin menyimpan perubahan di folder ini? (y/n): "))
-	
 	ansValid = False
-		   
 	while (not(ansValid)): 
 		if ans == "y":	# penyimpanan di current working directory (cwd)
-			saveCSV(header, datas, csv_file)
+			# file lama (_temp) dihapus, file baru menggantikan
+			os.remove("gadget_temp.csv")
+			os.remove("consumable_temp.csv")
+			os.remove("consumable_history_temp.csv")
+			os.remove("gadget_return_history_temp.csv")
+			os.remove("gadget_borrow_history_temp.csv")
+			
+			# sama seperti load, karena ada kemungkinan program masih digunakan setelah save
+			setupFile()
+			
 			ansValid = True
 		elif ans == "n": # penyimpanan di folder/direktori lain
+			# file lama tidak perlu dihapus, file baru dicopy ke folder baru kemudian dihapus pada cwd, nama file lama diganti kembali 
+			# file baru tidak dihapus karena mungkin masih digunakan pada program (jika tidak disave lagi, akan dihapus pada saat exit)
 			folder_name = input("Masukkan nama folder penyimpanan: ")
 			dir_save = os.path.dirname(os.path.abspath(__file__)) + "\\" + folder_name # direktori tujuan
 
-			if os.path.exists(dir_save):
-				# foldernya udah ada
-				path = dir_save + "\\" + csv_file # direktori file tujuan
-				saveCSV(header, datas, path)
-			else:
-				# foldernya belum ada
+			if not(os.path.exists(dir_save)):
+				# Jika foldernya belum ada, dibuat dulu foldernya
 				print("Folder belum ada, akan dibuat folder baru")
 				os.mkdir(dir_save) # foldernya dibuat
-				path = dir_save + "\\" + csv_file # direktori file tujuan
-				saveCSV(header, datas, path)
+				
+			# path file tujuan = dir_save + "\\csv_file"
+			# copas ke path tujuan
+			copas("gadget.csv", dir_save + "\\gadget.csv")
+			copas("consumable.csv", dir_save + "\\consumable.csv")
+			copas("consumable_history.csv", dir_save + "\\consumable_history.csv")
+			copas("gadget_return_history.csv", dir_save + "\\gadget_return_history.csv")
+			copas("gadget_borrow_history.csv", dir_save + "\\gadget_borrow_history.csv")
+				
 			ansValid = True	
 		else: # jawaban tidak valid
 			ans = str(input("Jawab dengan y(ya) atau n(tidak) !: "))	
@@ -43,12 +45,15 @@ def save(header, datas, csv_file):
 	return None
 
 def nosave():
+	# nosave, hanya pada exit (jika dipilih no)
+	# semua file baru dihapus (bisa jadi disave di folder lain sebelumnya)
 	os.remove("gadget.csv")
 	os.remove("consumable.csv")
 	os.remove("consumable_history.csv")
 	os.remove("gadget_return_history.csv")
 	os.remove("gadget_borrow_history.csv")
 	
+	# file lama (_temp) diubah kembali namanya
 	os.rename("gadget_temp.csv", "gadget.csv")
 	os.rename("consumable_temp.csv", "consumable.csv")
 	os.rename("consumable_history_temp.csv", "consumable_history")
