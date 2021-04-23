@@ -41,3 +41,18 @@ def save(header, datas, csv_file):
 			ans = str(input("Jawab dengan y(ya) atau n(tidak) !: "))	
 	
 	return None
+
+def nosave():
+	os.remove("gadget.csv")
+	os.remove("consumable.csv")
+	os.remove("consumable_history.csv")
+	os.remove("gadget_return_history.csv")
+	os.remove("gadget_borrow_history.csv")
+	
+	os.rename("gadget_temp.csv", "gadget.csv")
+	os.rename("consumable_temp.csv", "consumable.csv")
+	os.rename("consumable_history_temp.csv", "consumable_history")
+	os.rename("gadget_return_history_temp.csv", "gadget_return_history.csv")
+	os.rename("gadget_borrow_history_temp.csv", "gadget_borrow_history.csv")
+	
+	return None
