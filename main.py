@@ -12,6 +12,7 @@ from save import nosave
 from ubahjumlah import ubahjumlah
 from hapusitem import hapusitem
 from tambahitem import tambahitem
+from exit import exit
 
 parser = argparse.ArgumentParser()						  #
 parser.add_argument("Direktori", nargs='?', default='')	  #   Bagian awal program
@@ -45,18 +46,7 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 			user_input = input(">>> ")
 
 			if (user_input == "exit"):
-				ans = str(input("Apakah anda mau melakukan penyimpanan file yang sudah diubah? (y/n) "))
-
-				while ((ans != 'y') and (ans != 'Y') and (ans != 'n') and (ans != 'N')):	
-					print("Jawaban tidak valid, jawab dengan y/n ")
-					ans = str(input("Apakah anda mau melakukan penyimpanan file yang sudah diubah? (y/n) "))
-					
-				if ((ans == 'y') or (ans == 'Y')):
-					save()
-					print("Perubahan file telah disimpan, Terima Kasih!")
-				else: # ((ans == 'n') or (ans == 'N')):	 
-					nosave()
-					print("Terima kasih!")	 
+				exit() 
 				
 else:	# Gada input argumen untuk nama folder ('')
 	print("Tidak ada nama folder yang diberikan!")
