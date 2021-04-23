@@ -2,7 +2,25 @@ import os
 from load import copas
 from load import setupFile
 
-def save():
+def nosave():
+	# nosave, dipakai ketika tidak dilakukan penyimpanan di CWD
+	# semua file baru dihapus (bisa jadi disave di folder lain sebelumnya)
+	os.remove("gadget.csv")
+	os.remove("consumable.csv")
+	os.remove("consumable_history.csv")
+	os.remove("gadget_return_history.csv")
+	os.remove("gadget_borrow_history.csv")
+	
+	# file lama (_temp) diubah kembali namanya
+	os.rename("gadget_temp.csv", "gadget.csv")
+	os.rename("consumable_temp.csv", "consumable.csv")
+	os.rename("consumable_history_temp.csv", "consumable_history")
+	os.rename("gadget_return_history_temp.csv", "gadget_return_history.csv")
+	os.rename("gadget_borrow_history_temp.csv", "gadget_borrow_history.csv")
+	
+	return None
+
+def save(exit = False):
 	# fungsi save, untuk ditengah program ataupun pada saat exit (jika dipilih yes)
 	ans = str(input("Apakah anda ingin menyimpan perubahan di folder ini? (y/n): "))
 	ansValid = False
@@ -15,8 +33,9 @@ def save():
 			os.remove("gadget_return_history_temp.csv")
 			os.remove("gadget_borrow_history_temp.csv")
 			
-			# sama seperti load, karena ada kemungkinan program masih digunakan setelah save
-			setupFile()
+			if (not(exit)):
+				# sama seperti load, karena ada kemungkinan program masih digunakan setelah save
+				setupFile()
 			
 			ansValid = True
 		elif ans == "n": # penyimpanan di folder/direktori lain
@@ -37,6 +56,10 @@ def save():
 			copas("consumable_history.csv", dir_save + "\\consumable_history.csv")
 			copas("gadget_return_history.csv", dir_save + "\\gadget_return_history.csv")
 			copas("gadget_borrow_history.csv", dir_save + "\\gadget_borrow_history.csv")
+			
+			if (exit):
+				# Dalam kasus ketika exit, file baru (sudah disimpan di folder lain) dihapus dan file lama (_temp) diganti kembali namanya
+				nosave()
 				
 			ansValid = True	
 		else: # jawaban tidak valid
@@ -44,20 +67,3 @@ def save():
 	
 	return None
 
-def nosave():
-	# nosave, hanya pada exit (jika dipilih no)
-	# semua file baru dihapus (bisa jadi disave di folder lain sebelumnya)
-	os.remove("gadget.csv")
-	os.remove("consumable.csv")
-	os.remove("consumable_history.csv")
-	os.remove("gadget_return_history.csv")
-	os.remove("gadget_borrow_history.csv")
-	
-	# file lama (_temp) diubah kembali namanya
-	os.rename("gadget_temp.csv", "gadget.csv")
-	os.rename("consumable_temp.csv", "consumable.csv")
-	os.rename("consumable_history_temp.csv", "consumable_history")
-	os.rename("gadget_return_history_temp.csv", "gadget_return_history.csv")
-	os.rename("gadget_borrow_history_temp.csv", "gadget_borrow_history.csv")
-	
-	return None
