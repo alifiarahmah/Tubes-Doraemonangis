@@ -10,7 +10,7 @@ def load(dir_path):
 		os.rename("gadget_return_history.csv", "gadget_return_history_temp.csv")
 		os.rename("gadget_borrow_history.csv", "gadget_borrow_history_temp.csv")
 		
-		g = open("gadget_temp.csv", "r")
+		g = convDataToString(header, datas)
 		f = open("gadget.csv", "w+")
 		f.write(g)
 		
