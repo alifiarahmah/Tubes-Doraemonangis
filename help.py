@@ -1,3 +1,5 @@
+# ini agak self explanatory, nguli juga, apa ada cara lain yg lebih efektif?
+
 def help(role):
     if (role == "Admin"):
         print("=========================== HELP ===========================")

@@ -29,6 +29,7 @@ getRow(csv_file: string, col_name: string) -> integer
 	contoh: getRow("consumable.csv", "C1") -> 0
 """
 
+
 # FUNGSI PENUNJANG, CUMA BUAT FUNGSI DALAM FUNGSI
 
 def convDataToString(header, datas): # -> string
@@ -131,18 +132,20 @@ def addCSVdata(csv_file, inputs):
 	header = readCSV(csv_file)[0]
 	datas = readCSV(csv_file)[1]
 	datas.append(inputs)
-	saveCSV(header, datas, csv_file)
+	
+	return header, datas, csv_file
 
 def editCSVdata(csv_file, idx, col, val):
 	# edit data berdasar idx dan col-nya dalam csv
 	header = readCSV(csv_file)[0]
 	datas = readCSV(csv_file)[1]
 	datas[idx][col] = val
-	saveCSV(header, datas, csv_file)
-
+	
+	return header, datas, csv_file
+		
 def saveCSV(header, datas, csv_file):
 	# menyimpan header+data dalam csv
 	data_string = convDataToString(header, datas)
-	f = open(csv_file, "w")
+	f = open(csv_file, "w+")
 	f.write(data_string)
 	f.close()

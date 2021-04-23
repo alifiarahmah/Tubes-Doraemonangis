@@ -1,4 +1,5 @@
 from csv_stuffs import getRow, getCol, readCSV, saveCSV, readCSVdata
+from save import save_data_class
 
 def hapusitem():
 	# menghapus item di database
@@ -29,10 +30,10 @@ def hapusitem():
 		header = readCSV(csv_file)[0]
 		datas = readCSV(csv_file)[1]
 		datas.pop(getRow(csv_file, id))
-		saveCSV(header, datas, csv_file)
+		
 
 		print("Item telah berhasil dihapus dari database.")
-		return
+		return save_data_class(header, datas, csv_file)
 	else:
 		print("Oke ga jadi ya h3h3.")
 		return

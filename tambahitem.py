@@ -1,4 +1,5 @@
 from csv_stuffs import addCSVdata, getRow, getCol, readCSVdata, editCSVdata
+from save import save_data_class
 
 def tambahitem():
 	# menambahkan item ke dalam inventory
@@ -35,9 +36,10 @@ def tambahitem():
 
 	if id[0] == "G":  # gadget
 		year = input("Masukkan tahun ditemukan: ")
-		addCSVdata(csv_file, [id, nama, desc, jml, rarity, year])
+		header_save, datas_save, csv_file_save = addCSVdata(csv_file, [id, nama, desc, jml, rarity, year])
 	else: # consumable
-		addCSVdata(csv_file, [id, nama, desc, jml, rarity])
+		header_save, datas_save, csv_file_save = addCSVdata(csv_file, [id, nama, desc, jml, rarity])
 
 	print("Item telah berhasil ditambahkan ke database.")
-	return
+	
+	return save_data_class(header_save, datas_save, csv_file_save)
