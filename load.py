@@ -1,5 +1,12 @@
 import os
 
+def copas(file_lama, file_baru):
+	g = open(file_lama, "r")
+	f = open(file_baru, "w+")
+	f.write(g.read())
+	g.close()
+	f.close()
+
 def load(dir_path):
 	try:
 		os.chdir(dir_path) # Nge-set Working Directory
@@ -10,31 +17,12 @@ def load(dir_path):
 		os.rename("gadget_return_history.csv", "gadget_return_history_temp.csv")
 		os.rename("gadget_borrow_history.csv", "gadget_borrow_history_temp.csv")
 		
-		g = open("gadget_temp.csv", "r")
-		f = open("gadget.csv", "w+")
-		f.write(g.read())
-		g.close()
-		f.close()
-		g = open("consumable_temp.csv", "r")
-		f = open("consumable.csv", "w+")
-		f.write(g.read())
-		g.close()
-		f.close()
-		g = open("consumable_history_temp.csv", "r")
-		f = open("consumable_history.csv", "w+")
-		f.write(g.read())
-		g.close()
-		f.close()
-		g = open("gadget_return_history_temp.csv", "r")
-		f = open("gadget_return_history.csv", "w+")
-		f.write(g.read())
-		g.close()
-		f.close()
-		g = open("gadget_borrow_history_temp.csv", "r")
-		f = open("gadget_borrow_history.csv", "w+")
-		f.write(g.read())
-		g.close()
-		f.close()
+		copas("gadget_temp.csv", "gadget.csv")
+		copas("consumable_temp.csv", "consumable.csv")
+		copas("consumable_history_temp", "consumable_history")
+		copas("gadget_return_history_temp.csv", "gadget_return_history.csv")
+		copas("gadget_borrow_history_temp.csv", "gadget_borrow_history.csv")
+		
 		
 		print('Selamat datang di "Kantong Ajaib!"') 
 		return True
