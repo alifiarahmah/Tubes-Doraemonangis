@@ -9,20 +9,15 @@ def copas(file_lama, file_baru):
 
 def load(dir_path):
 	try:
-		os.chdir(dir_path) # Nge-set Working Directory
+		os.chdir(dir_path) # Nge-set Current Working Directory
 		
-		os.rename("gadget.csv", "gadget_temp.csv")
-		os.rename("consumable.csv", "consumable_temp.csv")
-		os.rename("consumable_history.csv", "consumable_history_temp")
-		os.rename("gadget_return_history.csv", "gadget_return_history_temp.csv")
-		os.rename("gadget_borrow_history.csv", "gadget_borrow_history_temp.csv")
-		
-		copas("gadget_temp.csv", "gadget.csv")
-		copas("consumable_temp.csv", "consumable.csv")
-		copas("consumable_history_temp", "consumable_history")
-		copas("gadget_return_history_temp.csv", "gadget_return_history.csv")
-		copas("gadget_borrow_history_temp.csv", "gadget_borrow_history.csv")
-		
+		# dibuat file baru untuk dimodif dalam program
+		# file temp untuk menyimpan file ori/lama, dalam kasus perubahan tidak di-save, file temp menggantikan file baru kembali
+		copas("gadget.csv", "gadget_temp.csv")
+		copas("consumable.csv", "consumable_temp.csv")
+		copas("consumable_history", "consumable_history_temp")
+		copas("gadget_return_history.csv", "gadget_return_history_temp.csv")
+		copas("gadget_borrow_history.csv", "gadget_borrow_history_temp.csv")	
 		
 		print('Selamat datang di "Kantong Ajaib!"') 
 		return True
