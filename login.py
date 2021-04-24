@@ -9,7 +9,7 @@ def login(): # -> string
     # Validasi login
     validasi = check_login(log_username, log_password)
     if (validasi[0] == True): # Login valid
-        print("Berhasil login!")
+        print("Halo " + log_username + "! Selamat datang di Kantong Ajaib.")
         print()
         return validasi[1]
     else: # Login tidak valid

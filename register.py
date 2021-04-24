@@ -36,7 +36,7 @@ def register(role): # -> ()
 
         saveCSV(header, database, "user.csv")
 
-        print("Registrasi berhasil dilakukan!")
+        print("User " + reg_username + " telah berhasil register ke dalam Kantong Ajaib.")
         print()
         return
 
