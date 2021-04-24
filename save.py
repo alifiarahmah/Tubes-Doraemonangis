@@ -3,7 +3,7 @@ from load import copas
 from load import setupFile
 
 def nosave():
-	# nosave, dipakai ketika tidak dilakukan penyimpanan di CWD
+	# nosave, dipakai ketika tidak dilakukan penyimpanan di CWD pada saat exit
 	# semua file baru dihapus (bisa jadi disave di folder lain sebelumnya)
 	os.remove("gadget.csv")
 	os.remove("consumable.csv")
@@ -34,7 +34,8 @@ def save(exit = False):
 			os.remove("gadget_borrow_history_temp.csv")
 			
 			if (not(exit)):
-				# sama seperti load, karena ada kemungkinan program masih digunakan setelah save
+				# Kasus penyimpanan di tengah program (bukan saat exit)
+				# Dilakukan setupFile seperti pada load, karena ada kemungkinan program masih digunakan setelah save
 				setupFile()
 			
 			ansValid = True
