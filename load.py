@@ -1,6 +1,7 @@
 import os
 
 def copas(file_lama, file_baru):
+	# meng-copy file 
 	g = open(file_lama, "r")
 	f = open(file_baru, "w+")
 	f.write(g.read())
@@ -8,8 +9,8 @@ def copas(file_lama, file_baru):
 	f.close()
 
 def setupFile():
-	# dibuat file baru untuk dimodif dalam program
-	# file temp untuk menyimpan file ori/lama, dalam kasus perubahan tidak di-save, file temp menggantikan file baru kembali
+	# Membuat file temp untuk menyimpan file dengan data awal, Program akan bekerja pada file asli
+	# Dalam kasus perubahan tidak di-save, file temp menggantikan file asli (yang mungkin telah dimodif) kembali
 	copas("gadget.csv", "gadget_temp.csv")
 	copas("consumable.csv", "consumable_temp.csv")
 	copas("consumable_history", "consumable_history_temp")
