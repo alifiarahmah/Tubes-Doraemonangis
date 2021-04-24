@@ -12,7 +12,7 @@ addCSVdata(csv_file: string, inputs: array of string)
 readCSVdata(csv_file: string, idx: integer, col: integer) -> string
 	baca data berdasar idx dan col-nya dalam csv
 
-editCSVdata(csv_file: string, idx: integer, col: integer, val)
+editCSVdata(csv_file: string, idx: integer, col: integer, val : string)
 	edit data berdasar idx dan col-nya dalam csv
 
 saveCSV(header: array of string, datas: array of terserah, csv_file: string)
@@ -23,7 +23,7 @@ getCol(csv_file: string, col_name: string) -> integer
 	biar enak buat edit data
 	contoh: getCol("user.csv", "alamat") -> 3
 
-getRow(csv_file: string, col_name: string) -> integer
+getRow(csv_file: string, row_name: string) -> integer
 	return row ke-berapa dari id dalam csv, kalau tidak ada return None
 	biar enak buat edit data
 	contoh: getRow("consumable.csv", "C1") -> 0
@@ -33,10 +33,10 @@ getRow(csv_file: string, col_name: string) -> integer
 
 def convDataToString(header, datas): # -> string
 	# convert data ke string untuk dimasukkan ke csv
-	str_data = ",".join(header) + "\n"
+	str_data = ";".join(header) + "\n"
 	for data in datas:
 		arr_data_string = [str(i) for i in data]
-		str_data += ",".join(arr_data_string) + "\n"
+		str_data += ";".join(arr_data_string) + "\n"
 	return str_data
 
 def stringSplitStrip(string, delimiter):  # -> array of string

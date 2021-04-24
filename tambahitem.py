@@ -2,9 +2,11 @@ from csv_stuffs import addCSVdata, getRow, getCol, readCSVdata, editCSVdata
 
 def tambahitem():
 	# menambahkan item ke dalam inventory
+
 	# KAMUS LOKAL
 	# csv_file, id, nama, desc, jml, rarity, year : string
 	
+	# ALGORITMA
 	id = input("Masukkan ID: ")
 
 	if id[0] == 'G': # id gadget
@@ -21,9 +23,9 @@ def tambahitem():
 
 	nama = input("Masukkan Nama: ")
 	desc = input("Masukkan Deskripsi: ")
-	jml = input("Masukkan Jumlah: ")
+	jml = int(input("Masukkan Jumlah: "))
 
-	if int(jml) < 0: # jumlah negatif
+	if jml < 0: # jumlah negatif
 		print("Jumlah tidak valid!")
 		return
 

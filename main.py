@@ -1,8 +1,7 @@
-# ini biar bisa ngetes aja :v
-
 import os
 import argparse
 from load import load_data
+
 parser = argparse.ArgumentParser()                          #
 parser.add_argument("Direktori", nargs='?', default='')     #   Bagian awal program
 args = parser.parse_args()                                  #
@@ -19,6 +18,10 @@ from login import login
 from register import register
 from help import help
 
+from tambahitem import tambahitem
+from hapusitem import hapusitem
+from ubahjumlah import ubahjumlah
+
 role = ""
 user_input = input(">>> ")
 while (user_input != "exit"):
@@ -28,4 +31,14 @@ while (user_input != "exit"):
         register(role)
     elif (user_input == "help"):
         help(role)
+    
+    # pilihan fungsi dari input
+    # ADMIN ONLY
+    if (user_input == "tambahitem"):
+        tambahitem()
+    elif (user_input == "ubahjumlah"):
+        ubahjumlah()
+    elif (user_input == "hapusitem"):
+        hapusitem()
+    
     user_input = input(">>> ")

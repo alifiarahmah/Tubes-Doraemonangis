@@ -2,10 +2,12 @@ from csv_stuffs import getRow, getCol, readCSVdata, editCSVdata
 
 def ubahjumlah():
 	# mengubah jumlah barang dalam inventory
+
 	# KAMUS LOKAL
 	# id, csv_file, nama : string
 	# id_idx, col, jml, jml_awal : integer
-
+	
+	# ALGORITMA
 	id = input("Masukkan ID: ")
 
 	if id[0] == "G": # gadget
@@ -39,5 +41,3 @@ def ubahjumlah():
 				print("Stok tetap sama.", end=" ")
 			
 			print("Stok sekarang:", readCSVdata(csv_file, id_idx, getCol(csv_file, "jumlah")))
-
-ubahjumlah()

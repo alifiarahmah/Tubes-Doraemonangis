@@ -2,10 +2,13 @@ from csv_stuffs import getRow, getCol, readCSV, saveCSV, readCSVdata
 
 def hapusitem():
 	# menghapus item di database
+
 	# KAMUS LOKAL
 	# id, csv_file, nama, prompt : string
 	# header : array of string
 	# datas : array of ada string ada integer
+
+	# ALGORITMA
 	
 	id = input("Masukkan ID item: ")
 
