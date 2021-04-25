@@ -44,9 +44,9 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 				print("Perintah tidak valid! (Lihat 'help' untuk melihat list perintah)")
 
 			user_input = input(">>> ")
-
-			if (user_input == "exit"):
-				exit() 
+			
+		# user_input == exit
+		exit() 
 				
 else:	# Gada input argumen untuk nama folder ('')
 	print("Tidak ada nama folder yang diberikan!")
