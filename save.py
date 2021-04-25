@@ -5,6 +5,7 @@ from load import setupFile
 def nosave():
 	# nosave, dipakai ketika tidak dilakukan penyimpanan di CWD pada saat exit
 	# semua file baru dihapus (bisa jadi disave di folder lain sebelumnya)
+	os.remove("user.csv")
 	os.remove("gadget.csv")
 	os.remove("consumable.csv")
 	os.remove("consumable_history.csv")
@@ -12,6 +13,7 @@ def nosave():
 	os.remove("gadget_borrow_history.csv")
 	
 	# file lama (_temp) diubah kembali namanya
+	os.rename("user_temp.csv", "user.csv")
 	os.rename("gadget_temp.csv", "gadget.csv")
 	os.rename("consumable_temp.csv", "consumable.csv")
 	os.rename("consumable_history_temp.csv", "consumable_history")
@@ -27,6 +29,7 @@ def save(exit = False):
 	while (not(ansValid)): 
 		if ans == "y":	# penyimpanan di current working directory (cwd)
 			# file lama (_temp) dihapus, file baru menggantikan
+			os.remove("user_temp.csv")
 			os.remove("gadget_temp.csv")
 			os.remove("consumable_temp.csv")
 			os.remove("consumable_history_temp.csv")
@@ -52,6 +55,7 @@ def save(exit = False):
 				
 			# path file tujuan = dir_save + "\\csv_file"
 			# copas ke path tujuan
+			copas("user.csv", dir_save + "\\user.csv")
 			copas("gadget.csv", dir_save + "\\gadget.csv")
 			copas("consumable.csv", dir_save + "\\consumable.csv")
 			copas("consumable_history.csv", dir_save + "\\consumable_history.csv")
