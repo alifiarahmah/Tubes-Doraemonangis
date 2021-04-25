@@ -1,4 +1,4 @@
-from csv_stuff import readCSV
+from csv_stuffs import readCSV
 
 def cari_gadget_rarity(): # Menampilkan gadget berdasarkan rarity
   

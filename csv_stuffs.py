@@ -1,5 +1,6 @@
 """
 ## daftar fungsi/prosedur yang bisa dipake ##
+
 readCSV(csv_file: string) -> [header: array of string, datas: array of array]
 	baca file csv dari csv_file
 	contoh: readCSV("user.csv") -> ['nama, kelas'], [['Anto','XII MIPA 5'],['Alex','X IPS']]
@@ -146,3 +147,7 @@ def saveCSV(header, datas, csv_file):
 	f = open(csv_file, "w")
 	f.write(data_string)
 	f.close()
+
+# referensi:
+# Tutorial 1 : Read dan Save Data dari CSV tanpa library di python - Mario Gunawan
+# https://13518114.medium.com/tubes-walkthrough-1-read-data-dari-csv-tanpa-library-605a6afe92db
