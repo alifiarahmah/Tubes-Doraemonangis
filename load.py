@@ -11,6 +11,7 @@ def copas(file_lama, file_baru):
 def setupFile():
 	# Membuat file temp untuk menyimpan file dengan data awal, Program akan bekerja pada file asli
 	# Dalam kasus perubahan tidak di-save, file temp menggantikan file asli (yang mungkin telah dimodif) kembali
+	copas("user.csv", "user_temp.csv")
 	copas("gadget.csv", "gadget_temp.csv")
 	copas("consumable.csv", "consumable_temp.csv")
 	copas("consumable_history.csv", "consumable_history_temp.csv")
