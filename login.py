@@ -32,6 +32,8 @@ def check_login(log_username, log_password): # -> (bool,string,int)
 
     # Validasi role dan id user
     x = False
+    y = ""
+    z = 0
     
     for i in range(len(database)):
         if (database[i][username] == log_username and database[i][password] == log_password):
