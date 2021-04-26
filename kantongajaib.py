@@ -33,7 +33,7 @@ while (user_input != "exit"):
         help(role)
     
     # pilihan fungsi dari input
-    if (user_input == "tambahitem"):
+    elif (user_input == "tambahitem"):
         tambahitem(role)
     elif (user_input == "ubahjumlah"):
         ubahjumlah(role)

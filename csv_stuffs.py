@@ -116,11 +116,11 @@ def readCSV(csv_file):  # -> [header: array of string, datas: array of array]
 	lines = [raw_line.replace("\n", "") for raw_line in raw_lines]
 
 	header = ""
-	header = stringSplitStrip(lines.pop(0), ",")
+	header = stringSplitStrip(lines.pop(0), ";")
 
 	datas = []
 	for line in lines:
-		raw_array_of_data = stringSplitStrip(line, ",")
+		raw_array_of_data = stringSplitStrip(line, ";")
 		array_of_data = [data.strip() for data in raw_array_of_data]
 		array_of_data = dataToInt(csv_file, array_of_data)
 		datas.append(array_of_data)
