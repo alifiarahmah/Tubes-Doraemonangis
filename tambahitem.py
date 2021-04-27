@@ -7,49 +7,58 @@ def tambahitem(role):
 	# csv_file, id, nama, desc, jml, rarity, year : string
 
 	# ALGORITMA
+
+	# validasi role Admin
 	if (role == "Admin"):
 		id = input("Masukkan ID: ")
 
-		if id[0] == 'G': # id gadget
-			csv_file = "gadget.csv"
-		elif id[0] == 'C': # id consumable
-			csv_file = "consumable.csv"
-		else: # id tidak valid
-			print("Gagal menambahkan item karena ID tidak valid.")
-			print()
+		# validasi format ID
+		if (id[0] == 'G') | (id[0] == 'C'):
+
+			if id[0] == 'G':
+				csv_file = "gadget.csv"
+			else: # id[0] == 'C'
+				csv_file = "consumable.csv"
+
+			# validasi keberadaan id di inventory
+			if getRow(csv_file, id) == None: # id belum ada
+
+				nama = input("Masukkan Nama: ")
+				desc = input("Masukkan Deskripsi: ")
+				jml = input("Masukkan Jumlah: ")
+
+				# validasi jumlah
+				if int(jml) > 0: 
+
+					rarity = input("Masukkan Rarity: ")
+
+					# validasi rarity
+					if rarity in 'CBAS':
+
+						if id[0] == "G":  # gadget
+							year = input("Masukkan tahun ditemukan: ")
+							addCSVdata(csv_file, [id, nama, desc, jml, rarity, year])
+						else:  # consumable
+							addCSVdata(csv_file, [id, nama, desc, jml, rarity])
+
+						print("Item telah berhasil ditambahkan ke database.\n")
+						return
+
+					else: # rarity tidak valid
+						print("Input rarity tidak valid!\n")
+						return
+
+				else: # jml < 0
+					print("Jumlah tidak valid!\n")
+					return
+
+			else:  # getRow(csv_file, id) != None
+				print("Gagal menambahkan item karena ID sudah ada.\n")
+				return
+
+		else: # (id[0] != G) & (id[0] != C)
+			print("Gagal menambahkan item karena ID tidak valid.\n")
 			return
 
-		if getRow(csv_file, id) != None: # id ada di database
-			print("Gagal menambahkan item karena ID sudah ada.")
-			print()
-			return
-
-		nama = input("Masukkan Nama: ")
-		desc = input("Masukkan Deskripsi: ")
-		jml = input("Masukkan Jumlah: ")
-
-		if int(jml) < 0: # jumlah negatif
-			print("Jumlah tidak valid!")
-			print()
-			return
-
-		rarity = input("Masukkan Rarity: ")
-
-		if rarity not in 'CBAS': # rarity tidak valid
-			print("Input rarity tidak valid!")
-			print()
-			return
-
-		if id[0] == "G":  # gadget
-			year = input("Masukkan tahun ditemukan: ")
-			addCSVdata(csv_file, [id, nama, desc, jml, rarity, year])
-		else: # consumable
-			addCSVdata(csv_file, [id, nama, desc, jml, rarity])
-
-		print("Item telah berhasil ditambahkan ke database.")
-		print()
-		return
-	
-	else: # role bukan admin
-		print("Anda tidak dapat melakukan perubahan pada item!")
-		print()
+	else: # role != "Admin"
+		print("Anda tidak dapat melakukan perubahan pada item!\n")
