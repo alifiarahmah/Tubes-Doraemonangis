@@ -2,21 +2,28 @@ from csv_stuffs import readCSV
 
 # FUNGSI UTAMA
 
-def login(): # -> (string,int)
-    log_username = input("Masukkan username: ")
-    log_password = input("Masukkan password: ")
+def login(role, user_id): # -> (string,int)
+    
+    if (role == ""):
+        log_username = input("Masukkan username: ")
+        log_password = input("Masukkan password: ")
 
-    # Validasi login
-    validasi = check_login(log_username, log_password)
-    if (validasi[0] == True): # Login valid
-        print("Halo " + log_username + "! Selamat datang di Kantong Ajaib.")
+        # Validasi login
+        validasi = check_login(log_username, log_password)
+        if (validasi[0] == True): # Login valid
+            print("Halo " + log_username + "! Selamat datang di Kantong Ajaib.")
+            print()
+            return validasi[1], validasi[2]
+        else: # Login tidak valid
+            print("Username atau password salah!")
+            print()
+            return validasi[1], validasi[2]
+        
+    else: # Role sudah ada, sudah login sebelumnya
+        print("Anda sudah login!")
         print()
-        return validasi[1], validasi[2]
-    else: # Login tidak valid
-        print("Username atau password salah!")
-        print()
-        return validasi[1], validasi[2]
-
+        return role, user_id
+        
 # FUNGSI PENUNJANG
 
 def check_login(log_username, log_password): # -> (bool,string,int)
