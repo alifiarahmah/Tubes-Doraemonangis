@@ -1,4 +1,4 @@
-from csv_stuffs import getRow, getCol, readCSV, saveCSV, readCSVdata
+from csv_stuffs import getRow, getCol, readCSV, saveCSV, readCSVdata, delCSVdata
 
 def hapusitem(role):
 	# menghapus item di database
@@ -29,13 +29,8 @@ def hapusitem(role):
 				nama = readCSVdata(csv_file, getRow(csv_file, id), getCol(csv_file, "nama"))
 				prompt = input("Apakah anda yakin ingin menghapus " + nama + " (Y/N)? ")
 
-				if prompt in 'Yy':
-
-					header = readCSV(csv_file)[0]
-					datas = readCSV(csv_file)[1]
-					datas.pop(getRow(csv_file, id)) # mengeluarkan item
-					saveCSV(header, datas, csv_file)
-
+				if prompt in 'Yy': # delete
+					delCSVdata(csv_file, getRow(csv_file, id))
 					print("Item telah berhasil dihapus dari database.\n")
 
 				else: # prompt not in 'Yy'

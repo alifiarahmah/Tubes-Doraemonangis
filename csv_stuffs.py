@@ -16,6 +16,9 @@ readCSVdata(csv_file: string, idx: integer, col: integer) -> string
 editCSVdata(csv_file: string, idx: integer, col: integer, val : string)
 	edit data berdasar idx dan col-nya dalam csv
 
+delCSVdata(csv_file: string, idx: integer)
+	menghapus keseluruhan data pada indeks tertentu dalam file CSV
+
 saveCSV(header: array of string, datas: array of terserah, csv_file: string)
 	menyimpan header+data dalam csv
 
@@ -68,6 +71,12 @@ def intIdxList(csv_file): # -> array of integer
 		return [3,5]
 	elif csv_file == "consumable.csv":
 		return [3]
+	elif csv_file == "gadget_borrow_history.csv":
+		return [0,4]
+	elif csv_file == "gadget_return_history.csv":
+		return [0]
+	elif csv_file == "consumable.csv":
+		return [3]
 
 def lenCol(csv_file):
 	if (csv_file == "user.csv") | (csv_file == "gadget.csv"):
@@ -76,6 +85,7 @@ def lenCol(csv_file):
 		return 5
 	elif (csv_file == "consumable_history.csv") | (csv_file == "gadget_return_history.csv"):
 		return 4
+
 
 # FUNGSI PANGGILABLE BUAT GAMPANGIN AJA
 
@@ -139,6 +149,13 @@ def editCSVdata(csv_file, idx, col, val):
 	header = readCSV(csv_file)[0]
 	datas = readCSV(csv_file)[1]
 	datas[idx][col] = val
+	saveCSV(header, datas, csv_file)
+
+def delCSVdata(csv_file, idx):
+	# menghapus keseluruhan data pada indeks tertentu dalam file CSV
+	header = readCSV(csv_file)[0]
+	datas = readCSV(csv_file)[1]
+	datas.pop(idx)
 	saveCSV(header, datas, csv_file)
 
 def saveCSV(header, datas, csv_file):
