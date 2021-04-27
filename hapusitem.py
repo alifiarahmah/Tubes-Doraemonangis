@@ -27,7 +27,7 @@ def hapusitem(role):
 			if getRow(csv_file, id) != None: # id ada di inventory
 
 				nama = readCSVdata(csv_file, getRow(csv_file, id), getCol(csv_file, "nama"))
-				prompt = input("Apakah anda yakin ingin menghapus", nama, "(Y/N)?")
+				prompt = input("Apakah anda yakin ingin menghapus " + nama + " (Y/N)? ")
 
 				if prompt in 'Yy':
 
