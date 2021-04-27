@@ -24,14 +24,21 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 	if (load(args.Direktori)):  # load -> True kalau foldernya ada, -> False kalau gada
 
 		role = ""
+    user_id = 0
+    
 		user_input = input(">>> ")
+    
 		while (user_input != "exit"):
 			if (user_input == "login"):
-				role = login() # nyimpen role user
+				tuple_login = login() # nyimpen role dan user id
+        role = tuple_login[0]
+        user_id = tuple_login[1]
 			elif (user_input == "register"):
 				register(role)
 			elif (user_input == "help"):
 				help(role)
+        
+      # Pilihan fungsi dari input
 			elif (user_input == "tambahitem"):
 				tambahitem(role)
 			elif (user_input == "ubahjumlah"):
@@ -52,5 +59,4 @@ else:	# Gada input argumen untuk nama folder ('')
 	print("Tidak ada nama folder yang diberikan!")
 	print("Usage: python kantongajaib.py <nama_folder>")
 
-	   
-			
+

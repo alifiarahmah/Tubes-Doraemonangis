@@ -28,3 +28,4 @@ def load(folder_name):
 	except OSError: # Foldernya gaada
 		print("Folder tidak ditemukan!")
 		return False
+
