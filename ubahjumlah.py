@@ -59,5 +59,3 @@ def ubahjumlah(role):
 
 	else: # role != "Admin"
 		print("Anda tidak dapat melakukan perubahan pada item!\n")
-
-ubahjumlah("Admin")
