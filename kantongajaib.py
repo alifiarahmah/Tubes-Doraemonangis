@@ -31,8 +31,8 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 		while (user_input != "exit"):
 			if (user_input == "login"):
 				tuple_login = login(role, user_id) # nyimpen role dan user id
-        			role = tuple_login[0]
-        			user_id = tuple_login[1]
+				role = tuple_login[0]
+				user_id = tuple_login[1]
 			elif (user_input == "register"):
 				register(role)
 			elif (user_input == "help"):
