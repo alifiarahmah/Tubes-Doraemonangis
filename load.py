@@ -19,9 +19,8 @@ def setupFile():
 	copas("gadget_borrow_history.csv", "gadget_borrow_history_temp.csv")	
 	
 def load(folder_name):
-	dir_path = os.path.dirname(os.path.abspath(__file__)) + "\\" + folder_name # path folder tujuan
-	if (os.path.exists(dir_path)): # foldernya ada
-		os.chdir(dir_path) # Nge-set Current Working Directory (CWD tidak akan berubah lagi sampai program di reboot)
+	if (os.path.exists(folder_name)): # foldernya ada
+		os.chdir(folder_name) # Nge-set Current Working Directory (CWD tidak akan berubah lagi sampai program di reboot)
 		setupFile() # menyiapkan file
 		print('Selamat datang di "Kantong Ajaib!"') 
 		return True
