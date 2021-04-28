@@ -14,7 +14,6 @@ def help(role):
         print("savedata         : Untuk menyimpan perubahan data.")
         print("help             : Untuk memberikan panduan penggunaan sistem.")
         print("exit             : Untuk keluar dari aplikasi.")
-        print()
     elif (role == "User"):
         print("======================== HELP ========================")
         print("login        : Untuk masuk ke dalam aplikasi.")
@@ -26,8 +25,6 @@ def help(role):
         print("savedata     : Untuk menyimpan perubahan data.")
         print("help         : Untuk memberikan panduan penggunaan sistem.")
         print("exit         : Untuk keluar dari aplikasi.")    
-        print()
     else: # role == "" 
         print("===================== HELP =====================")
         print("login            : Untuk masuk ke dalam aplikasi")   
-        print()
