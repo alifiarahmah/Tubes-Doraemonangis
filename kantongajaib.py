@@ -47,13 +47,13 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 				hapusitem(role)
 			elif (user_input == "save"):
 				save()
-			elif (user_input == "exit"):
-				exit()
 			else:
 				print("Perintah tidak valid! (Lihat 'help' untuk melihat list perintah)")
 				print()
 
 			user_input = input(">>> ")
+			
+		exit()
 			
 				
 else:	# Gada input argumen untuk nama folder ('')
