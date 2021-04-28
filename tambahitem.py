@@ -12,8 +12,12 @@ def tambahitem(role):
 	if (role == "Admin"):
 		id = input("Masukkan ID: ")
 
+		idnum = ""
+		for i in range(1,len(id)):
+			idnum += id[i]
+
 		# validasi format ID
-		if (id[0] == 'G') | (id[0] == 'C'):
+		if ((id[0] == 'G') | (id[0] == 'C')) & idnum.isnumeric():
 
 			if id[0] == 'G':
 				csv_file = "gadget.csv"
