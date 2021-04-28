@@ -11,7 +11,7 @@ def help(role):
         print("riwayatpinjam    : Untuk melihat riwayat peminjaman gadget.")
         print("riwayatkembali   : Untuk melihat riwayat pengembalian gadget.")
         print("riwayatambil     : Untuk melihat riwayat pengambilan consumable.")
-        print("savedata         : Untuk menyimpan perubahan data.")
+        print("save             : Untuk menyimpan perubahan data.")
         print("help             : Untuk memberikan panduan penggunaan sistem.")
         print("exit             : Untuk keluar dari aplikasi.")
     elif (role == "User"):
@@ -22,7 +22,7 @@ def help(role):
         print("pinjam       : Untuk melakukan peminjaman gadget.")
         print("kembalikan   : Untuk melakukan pengembalian gadget.")
         print("minta        : Untuk meminta consumable yang tersedia.")
-        print("savedata     : Untuk menyimpan perubahan data.")
+        print("save         : Untuk menyimpan perubahan data.")
         print("help         : Untuk memberikan panduan penggunaan sistem.")
         print("exit         : Untuk keluar dari aplikasi.")    
     else: # role == "" 
