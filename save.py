@@ -27,7 +27,7 @@ def save(exit = False):
 	ans = str(input("Apakah anda ingin menyimpan perubahan di folder ini? (y/n): "))
 	ansValid = False
 	while (not(ansValid)): 
-		if ans == "y":	# penyimpanan di current working directory (cwd)
+		if (ans == "y") or (ans == "Y") : # penyimpanan di current working directory (cwd)
 			# file lama (_temp) dihapus, file baru menggantikan
 			os.remove("user_temp.csv")
 			os.remove("gadget_temp.csv")
@@ -42,7 +42,7 @@ def save(exit = False):
 				setupFile()
 			
 			ansValid = True
-		elif ans == "n": # penyimpanan di folder/direktori lain
+		elif (ans == "n") or (ans == "N") : # penyimpanan di folder/direktori lain
 			# file lama tidak perlu dihapus, file baru dicopy ke folder baru kemudian dihapus pada cwd, nama file lama diganti kembali 
 			# file baru tidak dihapus karena mungkin masih digunakan pada program (jika tidak disave lagi, akan dihapus pada saat exit)
 			folder_name = input("Masukkan nama folder penyimpanan: ")
