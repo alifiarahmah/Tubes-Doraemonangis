@@ -7,7 +7,6 @@ def register(role): # -> ()
     # Validasi status login
     if (role == ""):
         print("Silahkan login terlebih dahulu!")
-        print()
         return
     
     # Sudah login sebagai Admin
@@ -19,7 +18,6 @@ def register(role): # -> ()
         # Validasi username
         if check_regis(reg_username):
             print("Username tidak tersedia.")
-            print()
             return
         else: 
             reg_password = input("Masukkan password: ")
@@ -37,12 +35,10 @@ def register(role): # -> ()
         saveCSV(header, database, "user.csv")
 
         print("User " + reg_username + " telah berhasil register ke dalam Kantong Ajaib.")
-        print()
         return
 
     else: # Sudah login sebagai User
         print("Anda tidak dapat melakukan registrasi, harap hubungi Admin.")
-        print()
 
 
 # FUNGSI PENUNJANG
