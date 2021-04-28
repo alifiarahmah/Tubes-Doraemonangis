@@ -1,12 +1,16 @@
+import datetime
+
 """
 
-fungsi mengurus tanggal
+fungsi yang berhubungan dengan tanggal
 
 isTglValid(tgl: string) -> boolean
 	validasi format tanggal sesuai dd/mm/yyyy
 
 isKabisat(y: integer) -> boolean
 	cek kabisat
+
+sort_data_date(arr_data) -> arr_data
 
 """
 
@@ -32,3 +36,19 @@ def isTglValid(tgl): # -> boolean
 				else: # 30 hari
 					if (d >= 1) & (d <= 30):
 						return True
+
+def sort_data_date(arr_data):
+# sort data berdasarkan tanggal
+    for i in range(1, len(arr_data)): # dimulai dari index ke-1
+
+        init_date = str(datetime.datetime.strptime(arr_data[i][3], "%d/%m/%Y"))
+        # inisiasi tanggal dalam format yyyy/mm/dd
+        init_data = arr_data[i]
+
+        j = i - 1
+        next_date = str(datetime.datetime.strptime(arr_data[j][3], "%d/%m/%Y"))
+        while j >= 0 and init_date > next_date:
+            arr_data[j + 1] = arr_data[j]
+            j -= 1
+            next_date = str(datetime.datetime.strptime(arr_data[j][3], "%d/%m/%Y"))
+        arr_data[j + 1] = init_data
