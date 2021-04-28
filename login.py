@@ -12,16 +12,13 @@ def login(role, user_id): # -> (string,int)
         validasi = check_login(log_username, log_password)
         if (validasi[0] == True): # Login valid
             print("Halo " + log_username + "! Selamat datang di Kantong Ajaib.")
-            print()
             return validasi[1], validasi[2]
         else: # Login tidak valid
             print("Username atau password salah!")
-            print()
             return validasi[1], validasi[2]
         
     else: # Role sudah ada, sudah login sebelumnya
         print("Anda sudah login!")
-        print()
         return role, user_id
         
 # FUNGSI PENUNJANG
