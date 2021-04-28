@@ -1,7 +1,7 @@
 id;username;nama;alamat;password;role
-0;alifiarahmah;Alifia Rahmah;Bogor;meong;Admin
-1;rojapthecat;Rojap Supriyadi;Jalan Bangka Raya nomor 14;cat;User
-2;psherman;P. Sherman;42 Wallaby Way Sydney;dentist;User
-3;bobbyd;Bobbby D.;Jalan;bobby;User
-4;ino;Rahadyanino;Road;inoino;Admin
-5;trsreh;Terserah;qwertyuiop;bumi;User
+1;alifiarahmah;Alifia Rahmah;Bogor;meong;Admin
+2;rojapthecat;Rojap Supriyadi;Jalan Bangka Raya 14;cat;User
+3;psherman;P. Sherman;42 Wallaby Way Sydney;dentist;User
+4;bobbyd;Bobbby D.;Jalan Dunia Baru dan Indah;bobby;User
+5;ino;Rahadyanino;Happy Road;inoino;Admin
+6;justin;Justin;Tubes Lane 3;just;User
