@@ -13,6 +13,8 @@ from ubahjumlah import ubahjumlah
 from hapusitem import hapusitem
 from tambahitem import tambahitem
 from exit import exit
+from cari_gadget_rarity import cari_gadget_rarity
+from cari_gadget_tahun import cari_gadget_tahun
 
 parser = argparse.ArgumentParser()						  #
 parser.add_argument("Direktori", nargs='?', default='')	  #   Bagian awal program
