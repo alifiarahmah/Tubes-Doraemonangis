@@ -47,6 +47,10 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 				hapusitem(role)
 			elif (user_input == "save"):
 				save()
+			elif (user_input == "caritahun"):
+				cari_gadget_tahun()
+			elif (user_input == "carirarity"):
+				cari_gadget_rarity()
 			else:
 				print("Perintah tidak valid! (Lihat 'help' untuk melihat list perintah)")
 				print()
