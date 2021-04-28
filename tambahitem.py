@@ -16,7 +16,7 @@ def tambahitem(role):
 		for i in range(1,len(id)):
 			idnum += id[i]
 
-		# validasi format ID
+		# validasi format ID G<angka> atau C<angka>
 		if ((id[0] == 'G') | (id[0] == 'C')) & idnum.isnumeric():
 
 			if id[0] == 'G':
