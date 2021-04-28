@@ -16,7 +16,7 @@ def nosave():
 	os.rename("user_temp.csv", "user.csv")
 	os.rename("gadget_temp.csv", "gadget.csv")
 	os.rename("consumable_temp.csv", "consumable.csv")
-	os.rename("consumable_history_temp.csv", "consumable_history")
+	os.rename("consumable_history_temp.csv", "consumable_history.csv")
 	os.rename("gadget_return_history_temp.csv", "gadget_return_history.csv")
 	os.rename("gadget_borrow_history_temp.csv", "gadget_borrow_history.csv")
 	
