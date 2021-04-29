@@ -37,6 +37,6 @@ def lihat_riwayat_pinjam_gadget(role): # Melihat riwayat pengambilan consumable
                     idx += 1
                     
     else: # Role != Admin
-        print("Anda tidak bisa mengakses riwayat!)
+        print("Anda tidak bisa mengakses riwayat!")
               
 # Melihat Riwayat Pengembalian Gadget

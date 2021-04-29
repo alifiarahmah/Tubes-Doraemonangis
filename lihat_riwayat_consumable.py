@@ -27,4 +27,4 @@ def lihat_riwayat_consumable(role): # Melihat riwayat pengambilan consumable
                 idx += 1
                 
     else: # Role != Admin
-        print("Anda tidak bisa mengakses riwayat!)
+        print("Anda tidak bisa mengakses riwayat!")
