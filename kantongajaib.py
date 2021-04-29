@@ -18,7 +18,7 @@ from cari_gadget_tahun import cari_gadget_tahun
 from pinjam import pinjam
 from kembalikan import kembalikan
 from ambil_consumable import ambil_consumable
-from lihat_riwayat_gadget import lihat_riwayat_pinjam_gadget
+from lihat_riwayat_gadget import lihat_riwayat_pinjam_gadget, lihat_riwayat_kembalikan_gadget
 from lihat_riwayat_consumable import lihat_riwayat_consumable
 
 parser = argparse.ArgumentParser()						  #
@@ -60,8 +60,8 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 				ambil_consumable(role)
 			elif (user_input == "riwayatpinjam"): # F11
 				lihat_riwayat_pinjam_gadget(role)
-			# elif (user_input == "riwayatkembali") # F12
-				# ...
+			elif (user_input == "riwayatkembali") # F12
+				lihat_riwayat_kembalikan_gadget(role)
 			elif (user_input == "riwayatambil"): # F13
 				lihat_riwayat_consumable(role)
 			elif (user_input == "save"): # F15
