@@ -40,7 +40,7 @@ def lihat_riwayat_pinjam_gadget(role): # Melihat riwayat pengambilan consumable
         print("Anda tidak bisa mengakses riwayat!")
               
 # Melihat Riwayat Pengembalian Gadget
-def lihat_riwayat_kembalikan_gadget(): # Melihat riwayat pengambilan consumable
+def lihat_riwayat_kembalikan_gadget(role): # Melihat riwayat pengambilan consumable
     if role == "Admin": # Validasi role Admin
         datas_gadget_return_history = readCSV("gadget_return_history.csv")
         datas_gadget_borrow_history = readCSV("gadget_borrow_history.csv")
