@@ -6,8 +6,8 @@ def lihat_riwayat_consumable(): # Melihat riwayat pengambilan consumable
 
     sort_data_date(datas_consumable_history[1]) # mengurutkan data terbaru berdasarkan tanggal
 
-    if len(datas_consumable_history) <= 5: # saat data <= 5
-        for i in range(5):
+    if len(datas_consumable_history[1]) <= 5: # saat data <= 5
+        for i in range(len(datas_consumable_history[1])):
             print("ID Pengambilan      : " + str(datas_consumable_history[1][i][0]))
             print("Nama Pengambil      : " + str(datas_consumable_history[1][i][1]))
             print("Nama Consumable     : " + str(datas_consumable_history[1][i][2]))
