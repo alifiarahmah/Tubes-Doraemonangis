@@ -60,7 +60,7 @@ def sort_data_date(arr_data): # insertion sort
             next_date = str(datetime.datetime.strptime(arr_data[j][3], "%d/%m/%Y"))
         arr_data[j + 1] = init_data
 
-def sort_data_date_2(arr_data): # insertion sort
+def sort_data_date_1(arr_data): # insertion sort
 # descending sort data berdasarkan tanggal untuk data
 # gadget_return_history.csv
     for i in range(1, len(arr_data)): # dimulai dari index ke-1
