@@ -74,9 +74,9 @@ def intIdxList(csv_file): # -> array of integer
 	elif csv_file == "gadget_borrow_history.csv":
 		return [0,4]
 	elif csv_file == "gadget_return_history.csv":
-		return [0]
-	elif csv_file == "consumable.csv":
-		return [3]
+		return [0,1]
+	elif csv_file == "consumable_history.csv":
+		return [0,4]
 
 def lenCol(csv_file):
 	if (csv_file == "user.csv") | (csv_file == "gadget.csv"):
