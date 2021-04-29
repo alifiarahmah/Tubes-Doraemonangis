@@ -59,12 +59,13 @@ def ambil_consumable(role):
             print("")
             print("Item '" + str(item) + " (x" + str(minta_jumlah) + ")' telah berhasil diambil!")
 
-            if datas_consumable_history[1] == []: # saat consumable_history.csv masih kosong
+            if datas_consumable_history[1] == []: # Saat consumable_history.csv masih kosong
                 history_id = 1
-            else: # saat ada data di consumable_history.csv
+            else: # Saat ada data di consumable_history.csv
                 history_id = datas_consumable_history[1][-1][0] + 1
             history = [history_id, role, history_nama, history_tanggal, history_jumlah]
             datas_consumable_history[1].append(history) # Menggabungkan history ke csv history consumable
-
-            saveCSV(datas_consumable[0], datas_consumable[1], "consumable.csv")
+            
+            # Simpan pengubahan pada ke-2 csv
+            saveCSV(datas_consumable[0], datas_consumable[1], "consumable.csv") # 
             saveCSV(datas_consumable_history[0], datas_consumable_history[1], "consumable_history.csv")
