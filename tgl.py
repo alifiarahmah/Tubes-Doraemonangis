@@ -11,7 +11,13 @@ isKabisat(y: integer) -> boolean
 	cek kabisat
 
 sort_data_date(arr_data) -> arr_data
+	mengurutkan data data baru berdasarkan tanggal dari data 
+	gadget_borrow_history.csv dan consumable_history.csv
 
+sort_data_date(arr_data) -> arr_data
+	mengurutkan data data baru berdasarkan tanggal dari data 
+	gadget_return_history.csv
+	
 """
 
 def isKabisat(y):
@@ -37,8 +43,9 @@ def isTglValid(tgl): # -> boolean
 					if (d >= 1) & (d <= 30):
 						return True
 
-def sort_data_date(arr_data):
-# sort data berdasarkan tanggal
+def sort_data_date(arr_data): # insertion sort
+# descending sort data berdasarkan tanggal untuk data
+# gadget_borrow_history.csv dan consumable_history.csv
     for i in range(1, len(arr_data)): # dimulai dari index ke-1
 
         init_date = str(datetime.datetime.strptime(arr_data[i][3], "%d/%m/%Y"))
@@ -51,4 +58,21 @@ def sort_data_date(arr_data):
             arr_data[j + 1] = arr_data[j]
             j -= 1
             next_date = str(datetime.datetime.strptime(arr_data[j][3], "%d/%m/%Y"))
+        arr_data[j + 1] = init_data
+
+def sort_data_date_2(arr_data): # insertion sort
+# descending sort data berdasarkan tanggal untuk data
+# gadget_return_history.csv
+    for i in range(1, len(arr_data)): # dimulai dari index ke-1
+
+        init_date = str(datetime.datetime.strptime(arr_data[i][2], "%d/%m/%Y"))
+        # inisiasi tanggal dalam format yyyy/mm/dd
+        init_data = arr_data[i]
+
+        j = i - 1
+        next_date = str(datetime.datetime.strptime(arr_data[j][2], "%d/%m/%Y"))
+        while j >= 0 and init_date > next_date:
+            arr_data[j + 1] = arr_data[j]
+            j -= 1
+            next_date = str(datetime.datetime.strptime(arr_data[j][2], "%d/%m/%Y"))
         arr_data[j + 1] = init_data
