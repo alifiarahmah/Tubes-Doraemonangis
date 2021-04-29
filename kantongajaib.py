@@ -60,7 +60,7 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 				ambil_consumable(role)
 			elif (user_input == "riwayatpinjam"): # F11
 				lihat_riwayat_pinjam_gadget(role)
-			elif (user_input == "riwayatkembali") # F12
+			elif (user_input == "riwayatkembali"): # F12
 				lihat_riwayat_kembalikan_gadget(role)
 			elif (user_input == "riwayatambil"): # F13
 				lihat_riwayat_consumable(role)
@@ -71,8 +71,8 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 			
 			else:
 				print("Perintah tidak valid! (Lihat 'help' untuk melihat list perintah)")
-				print()
-
+			
+			print()
 			user_input = input(">>> ")
 			
 		exit() # F17
