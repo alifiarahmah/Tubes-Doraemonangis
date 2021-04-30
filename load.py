@@ -1,7 +1,8 @@
 import os
+from csv_stuffs import getListCSV
 
 def copas(file_lama, file_baru):
-	# membuat file baru dengan isi yang sama dengan file lama 
+	# membuat file baru dengan isi yang sama dengan file lama (khusus csv)
 	g = open(file_lama, "r")
 	f = open(file_baru, "w+")
 	f.write(g.read())
@@ -11,12 +12,9 @@ def copas(file_lama, file_baru):
 def setupFile():
 	# Membuat file temp untuk menyimpan file dengan data awal, Program akan bekerja pada file asli
 	# Dalam kasus perubahan tidak di-save, file temp kembali menggantikan file asli (yang mungkin telah dimodif) 
-	copas("user.csv", "user_temp.csv")
-	copas("gadget.csv", "gadget_temp.csv")
-	copas("consumable.csv", "consumable_temp.csv")
-	copas("consumable_history.csv", "consumable_history_temp.csv")
-	copas("gadget_return_history.csv", "gadget_return_history_temp.csv")
-	copas("gadget_borrow_history.csv", "gadget_borrow_history_temp.csv")	
+	ListCSV = getListCSV("no_temp")
+	for i in range(len(ListCSV)):
+		copas(ListCSV[i], "temp_" + ListCSV[i]) 
 	
 def load(folder_name):
 	if (os.path.exists(folder_name)): # foldernya ada
@@ -28,3 +26,15 @@ def load(folder_name):
 		print("Folder tidak ditemukan!")
 		return False
 
+def load_inventori(user_id):
+	# mempersiapkan file inventori user
+	file_name = "inventori_" + str(user_id) + ".csv" # nama file inventori
+	if not(os.path.exists(file_name)):
+		# kalau file inventori user belum ada, dibuat dulu
+		f = open(file_name, 'w+')
+		f.write('id;nama;jumlah')
+		f.close()
+	# bikin file temp, seperti pada file lain saat load
+	copas(file_name, "temp_" + file_name)
+	
+# https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory

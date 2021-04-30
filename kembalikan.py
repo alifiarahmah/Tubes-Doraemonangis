@@ -1,4 +1,4 @@
-from csv_stuffs import readCSV, readCSVdata, addCSVdata, editCSVdata, getCol, getRow
+from csv_stuffs import readCSV, readCSVdata, addCSVdata, editCSVdata, getCol, getRow, delCSVdata
 from tgl import isTglValid
 
 def kembalikan(role, user_id):
@@ -46,7 +46,9 @@ def kembalikan(role, user_id):
 			no = int(input("Masukkan nomor peminjaman: ")) - 1
 			
 			# validasi nomor peminjaman
-			if (no >= 0) & (no < len(gadget_dipinjam)):
+
+			if (no >= 0) and (no < len(gadget_dipinjam)):
+
 				id_peminjaman = gadget_dipinjam[no-1][0]
 				id_gadget = gadget_dipinjam[no-1][1]
 				nama_gadget = gadget_dipinjam[no-1][2]
@@ -75,6 +77,10 @@ def kembalikan(role, user_id):
 
 					print("Item", nama_gadget, "(x" + str(jml_pinjam) + ") telah dikembalikan.\n")
 
+					# hapus gadget di inventori user
+					inventori = "inventori_" + str(user_id) + ".csv"
+					delCSVdata(inventori, getRow(inventori, id_gadget))
+					
 				else: # isTglValid(tgl) == False
 					print("Tanggal tidak valid!\n")
 
@@ -86,3 +92,5 @@ def kembalikan(role, user_id):
 
 	else: # role != "User"
 		print("Admin tidak perlu mengembalikan barang.\n")
+		
+		

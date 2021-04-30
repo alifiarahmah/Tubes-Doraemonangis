@@ -4,6 +4,7 @@ from save import nosave
 
 def exit(role):
 	if (role == ""):
+		nosave()
 		sys.exit("Terima kasih!")
 		
 	# else

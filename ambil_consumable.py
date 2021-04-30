@@ -1,4 +1,4 @@
-from csv_stuffs import readCSV, saveCSV
+from csv_stuffs import readCSV, saveCSV, addCSVdata, editCSVdata, getRow, readCSVdata
 from tgl import isTglValid
 
 def ambil_consumable(role, user_id):
@@ -59,7 +59,16 @@ def ambil_consumable(role, user_id):
 
             print("")
             print("Item '" + str(item) + " (x" + str(minta_jumlah) + ")' telah berhasil diambil!")
-
+            
+            # update inventori user
+			inventori = "inventori_" + str(user_id) + ".csv"
+			idx = getRow(inventori, minta_id)
+			if idx != None:  # ID item ada di inventori
+				new_val = int(readCSVdata(inventori, idx, 2)) + minta_jumlah # jumlah consumable ditambah	
+				editCSVdata(inventori, idx, 2, str(new_val)) # diedit filenya dengan jumlah baru
+			else:	# ID item tidak ada di inventori
+				addCSVdata(inventori, [minta_id, item, str(minta_jumlah)])
+            
             if datas_consumable_history[1] == []: # Saat consumable_history.csv masih kosong
                 history_id = 1
             else: # Saat ada data di consumable_history.csv
