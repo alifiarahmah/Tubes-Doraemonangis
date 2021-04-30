@@ -35,6 +35,6 @@ def load_inventori(user_id):
 		f.write('id;nama;jumlah')
 		f.close()
 	# bikin file temp, seperti pada file lain saat load
-	copas(file_name, "temp_" + path)
+	copas(file_name, "temp_" + file_name)
 	
 # https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory
