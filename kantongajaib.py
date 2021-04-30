@@ -34,14 +34,27 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 		user_id = 0
     
 		user_input = input(">>> ")
-    
+	
+		while (role == ""):
+			if (user_input == "login"): # F02
+				tuple_login = login(role, user_id) 
+				role = tuple_login[0]
+				user_id = tuple_login[1]
+			elif (user_input == "help"): # F16
+				help(role)
+			elif (user_input == "exit"): # F17
+				exit()
+			else: 
+				print("Silahkan login terlebih dahulu!")
+				
+			print()
+			user_input = input(">>> ")
+				
 		while (user_input != "exit"):
 			if (user_input == "register"): # F01
 				register(role)
-			elif (user_input == "login"): # F02
-				tuple_login = login(role, user_id) # nyimpen role dan user id
-				role = tuple_login[0]
-				user_id = tuple_login[1]
+			elif (user_input == "login"): # F02 Sudah dijalankan
+				print("Anda sudah login!")
 			elif (user_input == "carirarity"): # F03
 				cari_gadget_rarity()
 			elif (user_input == "caritahun"): # F04
