@@ -8,7 +8,7 @@ def ambil_consumable(role, user_id):
     else: # Role = User
         datas_consumable = readCSV("consumable.csv")
         datas_consumable_history = readCSV("consumable_history.csv")
-        datas_user = readCSV("user.csv)
+        datas_user = readCSV("user.csv")
         
         if datas_consumable[1] == []: # Data consumable kosong
             print("Belum ada consumable tersedia")
