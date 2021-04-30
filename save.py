@@ -54,8 +54,9 @@ def save(exit = False):
 			# path file tujuan = dir_save + "\\" + CopasList[i]
 			# copas ke path tujuan
 			CopasList = getListCSV("no_temp")
-				for i in range(len(CopasList)):	
-					copas(CopasList[i], dir_save + "\\" + CopasList[i]) 
+			for i in range(len(CopasList)):	
+				copas(CopasList[i], dir_save + "\\" + CopasList[i]) 
+				
 			#copas("user.csv", dir_save + "\\user.csv")
 			
 			if (exit):
