@@ -32,6 +32,7 @@ getRow(csv_file: string, row_name: string) -> integer
 	biar enak buat edit data
 	contoh: getRow("consumable.csv", "C1") -> 0
 """
+import os
 
 # FUNGSI PENUNJANG, CUMA BUAT FUNGSI DALAM FUNGSI
 
