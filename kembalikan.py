@@ -1,4 +1,4 @@
-from csv_stuffs import readCSV, readCSVdata, addCSVdata, editCSVdata, getCol, getRow
+from csv_stuffs import readCSV, readCSVdata, addCSVdata, editCSVdata, getCol, getRow, delCSVdata
 from tgl import isTglValid
 
 def kembalikan(role, user_id):
@@ -26,7 +26,7 @@ def kembalikan(role, user_id):
 		for i in range(len(datas)):  # iterasi tiap row dalam datas
 			# untuk setiap pinjam dari user
 			isnt_returned = readCSVdata("gadget_borrow_history.csv", i, getCol("gadget_borrow_history.csv", "is_returned")) == "0"
-			if (readCSVdata("gadget_borrow_history.csv", i, id_peminjam_col) == user_id) & isnt_returned:
+			if (readCSVdata("gadget_borrow_history.csv", i, id_peminjam_col) == str(user_id)) & isnt_returned:
 				# ambil id peminjaman
 				id_peminjaman = readCSVdata("gadget_borrow_history.csv", i, getCol("gadget_borrow_history.csv", "id"))
 				# ambil namanya
@@ -43,17 +43,16 @@ def kembalikan(role, user_id):
 				print(str(i+1) + ".", gadget_dipinjam[i][2])
 			print()
 
-			no = int(input("Masukkan nomor peminjaman: "))
+			no = int(input("Masukkan nomor peminjaman: ")) - 1
 			
 			# validasi nomor peminjaman
-			if (no >= 1) & (no <= len(gadget_dipinjam)):
-				no -= 1
-				id_peminjaman = gadget_dipinjam[no][0]
-				id_gadget = gadget_dipinjam[no][1]
-				nama_gadget = gadget_dipinjam[no][2]
+			if (no >= 0) and (no < len(gadget_dipinjam)):
+				id_peminjaman = gadget_dipinjam[no-1][0]
+				id_gadget = gadget_dipinjam[no-1][1]
+				nama_gadget = gadget_dipinjam[no-1][2]
 				
 				# ubah kalo mau bonus
-				jml_pinjam = readCSVdata("gadget_borrow_history.csv", id_peminjaman, getCol("gadget_borrow_history.csv", "jumlah"))
+				jml_pinjam = readCSVdata("gadget_borrow_history.csv", getRow("gadget_borrow_history.csv", id_peminjaman), getCol("gadget_borrow_history.csv", "jumlah"))
 
 				tgl = input("Tanggal pengembalian: ")
 
@@ -72,13 +71,13 @@ def kembalikan(role, user_id):
 						addCSVdata("gadget_return_history.csv", [id, id_peminjaman, tgl])
 
 					# edit is_returned di gadget_borrow_history.csv
-					editCSVdata("gadget_borrow_history.csv", id_peminjaman, getCol("gadget_borrow_history.csv", "is_returned"), 1)
+					editCSVdata("gadget_borrow_history.csv", getRow("gadget_borrow_history.csv", id_peminjaman), getCol("gadget_borrow_history.csv", "is_returned"), 1)
+
+					print("Item", nama_gadget, "(x" + str(jml_pinjam) + ") telah dikembalikan.\n")
 
 					# hapus gadget di inventori user
 					inventori = "inventori_" + str(user_id) + ".csv"
 					delCSVdata(inventori, getRow(inventori, id_gadget))
-					
-					print("Item", nama_gadget, "(x" + str(jml_pinjam) + ") telah dikembalikan.\n")
 					
 				else: # isTglValid(tgl) == False
 					print("Tanggal tidak valid!\n")
@@ -91,3 +90,5 @@ def kembalikan(role, user_id):
 
 	else: # role != "User"
 		print("Admin tidak perlu mengembalikan barang.\n")
+		
+		

@@ -71,7 +71,7 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 			elif (user_input == "kembalikan"): # F09
 				kembalikan(role, user_id)
 			elif (user_input == "minta"): # F10
-				ambil_consumable(role)
+				ambil_consumable(role, user_id)
 			elif (user_input == "riwayatpinjam"): # F11
 				lihat_riwayat_pinjam_gadget(role)
 			elif (user_input == "riwayatkembali"): # F12

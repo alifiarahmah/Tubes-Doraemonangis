@@ -32,6 +32,7 @@ getRow(csv_file: string, row_name: string) -> integer
 	biar enak buat edit data
 	contoh: getRow("consumable.csv", "C1") -> 0
 """
+
 import os
 
 # FUNGSI PENUNJANG, CUMA BUAT FUNGSI DALAM FUNGSI
@@ -78,6 +79,9 @@ def intIdxList(csv_file): # -> array of integer
 		return [0,1]
 	elif csv_file == "consumable_history.csv":
 		return [0,4]
+	else:
+		return [3]
+		
 
 def lenCol(csv_file):
 	if (csv_file == "user.csv") | (csv_file == "gadget.csv"):
@@ -86,6 +90,8 @@ def lenCol(csv_file):
 		return 5
 	elif (csv_file == "consumable_history.csv") | (csv_file == "gadget_return_history.csv"):
 		return 4
+	else:
+		return 3
 
 
 # FUNGSI PANGGILABLE BUAT GAMPANGIN AJA

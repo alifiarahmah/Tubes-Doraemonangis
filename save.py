@@ -39,13 +39,15 @@ def save(exit = False):
 			print("Data telah disimpan pada folder saat ini!")
 			ansValid = True
 		elif (ans == "n") or (ans == "N") : # penyimpanan di folder/direktori lain
-			print("Saving...")
-			time.sleep(3)
+			
 			# file lama tidak perlu dihapus, file baru dicopy ke folder baru kemudian dihapus pada cwd, nama file lama diganti kembali 
 			# file baru tidak dihapus karena mungkin masih digunakan pada program (jika tidak disave lagi, akan dihapus pada saat exit)
 			folder_name = input("Masukkan nama folder penyimpanan: ")
 			dir_save = os.path.dirname(os.path.abspath(__file__)) + "\\" + folder_name # direktori tujuan
-
+			
+			print("Saving...")
+			time.sleep(3)
+			
 			if not(os.path.exists(dir_save)):
 				# Jika foldernya belum ada, dibuat dulu foldernya
 				print("Folder belum ada, akan dibuat folder baru")
@@ -56,8 +58,7 @@ def save(exit = False):
 			CopasList = getListCSV("no_temp")
 			for i in range(len(CopasList)):	
 				copas(CopasList[i], dir_save + "\\" + CopasList[i]) 
-				
-			#copas("user.csv", dir_save + "\\user.csv")
+			
 			
 			if (exit):
 				# Dalam kasus ketika exit, file baru (sudah disimpan di folder lain) dihapus dan file lama (_temp) diganti kembali namanya
