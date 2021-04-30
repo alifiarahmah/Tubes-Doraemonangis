@@ -46,7 +46,9 @@ def kembalikan(role, user_id):
 			no = int(input("Masukkan nomor peminjaman: ")) - 1
 			
 			# validasi nomor peminjaman
+
 			if (no >= 0) and (no < len(gadget_dipinjam)):
+
 				id_peminjaman = gadget_dipinjam[no-1][0]
 				id_gadget = gadget_dipinjam[no-1][1]
 				nama_gadget = gadget_dipinjam[no-1][2]
