@@ -76,7 +76,10 @@ def kembalikan(role, user_id):
 
 					print("Item", nama_gadget, "(x" + str(jml_pinjam) + ") telah dikembalikan.\n")
 
-			else: # 
+				else: # isTglValid(tgl) == False
+					print("Tanggal tidak valid!\n")
+
+			else:  # ~((no >= 1) & (no <= len(gadget_dipinjam)))
 				print("Tidak ada barang dengan nomor peminjaman tersebut!\n")
 
 		else: # len(data_dipinjam) 
