@@ -1,7 +1,7 @@
 from csv_stuffs import readCSV, saveCSV
 from tgl import isTglValid
 
-def ambil_consumable(role):
+def ambil_consumable(role, user_id):
     if (role == "Admin"): # Validasi role user
         print("Admin tidak bisa mengambil consumable")
         
@@ -63,7 +63,7 @@ def ambil_consumable(role):
                 history_id = 1
             else: # Saat ada data di consumable_history.csv
                 history_id = datas_consumable_history[1][-1][0] + 1
-            history = [history_id, role, history_nama, history_tanggal, history_jumlah]
+            history = [history_id, user_id, history_nama, history_tanggal, history_jumlah]
             datas_consumable_history[1].append(history) # Menggabungkan history ke csv history consumable
             
             # Simpan pengubahan pada ke-2 csv
