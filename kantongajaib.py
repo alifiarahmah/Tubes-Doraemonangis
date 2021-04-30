@@ -3,12 +3,11 @@
 import os
 import time
 import argparse
-from load import load
+from load import load, setInventori
 from login import login
 from register import register
 from help import help
-from save import save
-from save import nosave
+from save import save, nosave
 from ubahjumlah import ubahjumlah
 from hapusitem import hapusitem
 from tambahitem import tambahitem
@@ -50,7 +49,7 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 			print()
 			user_input = input(">>> ")
 		
-		SetInventori(user_id)
+		setInventori(user_id)
 		
 		while (user_input != "exit"):
 			if (user_input == "register"): # F01
