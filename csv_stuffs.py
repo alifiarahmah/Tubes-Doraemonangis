@@ -165,7 +165,7 @@ def saveCSV(header, datas, csv_file):
 	f.write(data_string)
 	f.close()
 
-def getListCSV():
+def getListCSV(cond):
 	# mengembalikan list berisi semua file csv pada Current Working Directory
 	temp = []
 	for (dirpath, dirnames, filenames) in os.walk(os.getcwd()):
@@ -174,10 +174,19 @@ def getListCSV():
 		break
 		
 	ListCSV = []
-	for i in range(len(temp)):
+	if (cond == "no_temp"):
+		# tanpa file temp
+		for i in range(len(temp)):
 		# membuat list dari file yang bertipe csv (filter)
-		if (temp[i].rfind('.csv') == (len(temp[i])-4)):
-			ListCSV.append(temp[i])
+			if ((temp[i].rfind('.csv') == (len(temp[i])-4)) and (temp[i].find('temp_') != 0)) :
+				ListCSV.append(temp[i])
+				
+	elif (cond == "only_temp"):
+		# hanya file temp
+		for i in range(len(temp)):
+		# membuat list dari file yang bertipe csv (filter)
+			if ((temp[i].rfind('.csv') == (len(temp[i])-4)) and (temp[i].find('temp_') == 0)) :
+				ListCSV.append(temp[i])
 	return ListCSV
 		
 # referensi:
