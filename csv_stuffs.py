@@ -33,6 +33,8 @@ getRow(csv_file: string, row_name: string) -> integer
 	contoh: getRow("consumable.csv", "C1") -> 0
 """
 
+import os
+
 # FUNGSI PENUNJANG, CUMA BUAT FUNGSI DALAM FUNGSI
 
 def convDataToString(header, datas): # -> string
@@ -77,6 +79,9 @@ def intIdxList(csv_file): # -> array of integer
 		return [0,1]
 	elif csv_file == "consumable_history.csv":
 		return [0,4]
+	else:
+		return [3]
+		
 
 def lenCol(csv_file):
 	if (csv_file == "user.csv") | (csv_file == "gadget.csv"):
@@ -85,6 +90,8 @@ def lenCol(csv_file):
 		return 5
 	elif (csv_file == "consumable_history.csv") | (csv_file == "gadget_return_history.csv"):
 		return 4
+	else:
+		return 3
 
 
 # FUNGSI PANGGILABLE BUAT GAMPANGIN AJA
@@ -165,6 +172,30 @@ def saveCSV(header, datas, csv_file):
 	f.write(data_string)
 	f.close()
 
+def getListCSV(cond):
+	# mengembalikan list berisi semua file csv pada Current Working Directory
+	temp = []
+	for (dirpath, dirnames, filenames) in os.walk(os.getcwd()):
+		# membuat list sementara untuk semua file dalam direktori
+		temp.extend(filenames)
+		break
+		
+	ListCSV = []
+	if (cond == "no_temp"):
+		# tanpa file temp
+		for i in range(len(temp)):
+		# membuat list dari file yang bertipe csv dan tidak diawali 'temp_' (filter)
+			if ((temp[i].rfind('.csv') == (len(temp[i])-4)) and (temp[i].find('temp_') != 0)) :
+				ListCSV.append(temp[i])
+				
+	elif (cond == "only_temp"):
+		# hanya file temp
+		for i in range(len(temp)):
+		# membuat list dari file yang bertipe csv dan diawali 'temp_' (filter)
+			if ((temp[i].rfind('.csv') == (len(temp[i])-4)) and (temp[i].find('temp_') == 0)) :
+				ListCSV.append(temp[i])
+	return ListCSV
+		
 # referensi:
 # Tutorial 1 : Read dan Save Data dari CSV tanpa library di python - Mario Gunawan
 # https://13518114.medium.com/tubes-walkthrough-1-read-data-dari-csv-tanpa-library-605a6afe92db
