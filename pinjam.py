@@ -18,7 +18,7 @@ def pinjam(role, user_id):
 		if getRow("gadget.csv", item_id) != None: # ID item ada di database
 			
 			# cek lagi dipinjam atau ga
-			if getRow("inventori_" + str(user_id) + ".csv" , item_id) == None: # ID item tidak ada di inventori user
+			if getRow("inventori_" + str(user_id) + ".csv", item_id) == None: # ID item tidak ada di inventori user
 				tgl = input("Tanggal peminjaman: ")
 
 				# validasi tanggal
@@ -42,7 +42,10 @@ def pinjam(role, user_id):
 								# catat ke gadget_borrow_history
 								id = int(len(readCSV("gadget_borrow_history.csv")[1])+1)
 								addCSVdata("gadget_borrow_history.csv", [id, user_id, item_id, tgl, jml_pinjam, 0])
-
+								
+								# catat ke inventory user
+								addCSVdata("inventori_" + str(user_id) + ".csv", [item_id, item, str(jml_pinjam)])
+								
 								print("Item", item, "(x" + str(jml_pinjam) + ")", "berhasil dipinjam!\n")
 
 							elif stok == 0:
