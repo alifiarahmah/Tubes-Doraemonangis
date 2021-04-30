@@ -1,8 +1,12 @@
+import sys
 from save import save
 from save import nosave
 
-def exit():
-
+def exit(role):
+	if (role == ""):
+		sys.exit("Terima kasih!")
+		
+	# else
 	ans = str(input("Apakah anda mau melakukan penyimpanan file yang sudah diubah? (y/n) "))
 
 	while ((ans != 'y') and (ans != 'Y') and (ans != 'n') and (ans != 'N')):	
