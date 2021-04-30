@@ -27,4 +27,5 @@ def help(role):
         print("exit         : Untuk keluar dari aplikasi.")    
     else: # role == "" 
         print("===================== HELP =====================")
-        print("login            : Untuk masuk ke dalam aplikasi")   
+        print("login            : Untuk masuk ke dalam aplikasi.")
+        print("exit             : Untuk keluar dari aplikasi.")
