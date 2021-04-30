@@ -4,22 +4,17 @@ from csv_stuffs import readCSV
 
 def login(role, user_id): # -> (string,int)
     
-    if (role == ""):
-        log_username = input("Masukkan username: ")
-        log_password = input("Masukkan password: ")
+    log_username = input("Masukkan username: ")
+    log_password = input("Masukkan password: ")
 
         # Validasi login
-        validasi = check_login(log_username, log_password)
-        if (validasi[0] == True): # Login valid
-            print("Halo " + log_username + "! Selamat datang di Kantong Ajaib.")
-            return validasi[1], validasi[2]
-        else: # Login tidak valid
-            print("Username atau password salah!")
-            return validasi[1], validasi[2]
-        
-    else: # Role sudah ada, sudah login sebelumnya
-        print("Anda sudah login!")
-        return role, user_id
+    validasi = check_login(log_username, log_password)
+    if (validasi[0] == True): # Login valid
+        print("Halo " + log_username + "! Selamat datang di Kantong Ajaib.")
+        return validasi[1], validasi[2]
+    else: # Login tidak valid
+        print("Username atau password salah!")
+        return validasi[1], validasi[2]
         
 # FUNGSI PENUNJANG
 
