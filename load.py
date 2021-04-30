@@ -12,7 +12,8 @@ def copas(file_lama, file_baru):
 def setupFile():
 	# Membuat file temp untuk menyimpan file dengan data awal, Program akan bekerja pada file asli
 	# Dalam kasus perubahan tidak di-save, file temp kembali menggantikan file asli (yang mungkin telah dimodif) 
-	for i in range(len(getListCSV("no_temp"))):	
+	ListCSV = getListCSV("no_temp")
+	for i in range(len(ListCSV)):
 		copas(ListCSV[i], "temp_" + ListCSV[i]) 
 	
 def load(folder_name):
