@@ -27,11 +27,14 @@ def load(folder_name):
 		return False
 
 def SetInventori(user_id):
-	file = "inventori_" + str(user_id) + ".csv" 
+	# mempersiapkan file inventori user
+	file = "inventori_" + str(user_id) + ".csv" # nama file inventori
 	if not(os.path.exists(file)):
+		# kalau file inventori user belum ada, dibuat dulu
 		f = open(file, 'w+')
-		f.write('id,nama,jumlah')
+		f.write('id;nama;jumlah')
 		f.close()
+	# bikin file temp, seperti pada file lain saat load
 	copas(path, "temp_" + path)
 	
 # https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory
