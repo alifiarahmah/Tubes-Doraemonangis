@@ -14,10 +14,6 @@ def ambil_consumable(role, user_id):
             print("Belum ada consumable tersedia")
 
         else: # Data consumable tidak kosong
-            for i in range(len(datas_user[1])):
-                if user_id == datas_user[1][i][0]:
-                    nama_user = str(datas_user[1][i][1])
-            
             minta_id = input("Masukkan ID item: ") # Input id consumable yang ingin diambil
             count_check = 0
             loop = True
@@ -68,7 +64,7 @@ def ambil_consumable(role, user_id):
                 history_id = 1
             else: # Saat ada data di consumable_history.csv
                 history_id = datas_consumable_history[1][-1][0] + 1
-            history = [history_id, nama_user, history_id_consumable, history_tanggal, history_jumlah]
+            history = [history_id, user_id, history_id_consumable, history_tanggal, history_jumlah]
             datas_consumable_history[1].append(history) # Menggabungkan history ke csv history consumable
             
             # Simpan pengubahan pada ke-2 csv
