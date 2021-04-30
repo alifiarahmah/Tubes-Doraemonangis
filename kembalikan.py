@@ -74,8 +74,12 @@ def kembalikan(role, user_id):
 					# edit is_returned di gadget_borrow_history.csv
 					editCSVdata("gadget_borrow_history.csv", id_peminjaman, getCol("gadget_borrow_history.csv", "is_returned"), 1)
 
+					# hapus gadget di inventori user
+					inventori = "inventori_" + str(user_id) + ".csv"
+					delCSVdata(inventori, getRow(inventori, id_gadget))
+					
 					print("Item", nama_gadget, "(x" + str(jml_pinjam) + ") telah dikembalikan.\n")
-
+					
 				else: # isTglValid(tgl) == False
 					print("Tanggal tidak valid!\n")
 
