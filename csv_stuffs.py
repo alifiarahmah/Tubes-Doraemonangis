@@ -177,14 +177,14 @@ def getListCSV(cond):
 	if (cond == "no_temp"):
 		# tanpa file temp
 		for i in range(len(temp)):
-		# membuat list dari file yang bertipe csv (filter)
+		# membuat list dari file yang bertipe csv dan tidak diawali 'temp_' (filter)
 			if ((temp[i].rfind('.csv') == (len(temp[i])-4)) and (temp[i].find('temp_') != 0)) :
 				ListCSV.append(temp[i])
 				
 	elif (cond == "only_temp"):
 		# hanya file temp
 		for i in range(len(temp)):
-		# membuat list dari file yang bertipe csv (filter)
+		# membuat list dari file yang bertipe csv dan diawali 'temp_' (filter)
 			if ((temp[i].rfind('.csv') == (len(temp[i])-4)) and (temp[i].find('temp_') == 0)) :
 				ListCSV.append(temp[i])
 	return ListCSV
