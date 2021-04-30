@@ -21,7 +21,7 @@ def ambil_consumable(role):
                 for i in range(len(datas_consumable[1])):
                     if minta_id == datas_consumable[1][i][0]:
                         count_check += 1
-                        history_nama = datas_consumable[1][i][1]
+                        history_nama = datas_consumable[1][i][0]
                 if count_check > 0:
                     loop = False
                 else:
