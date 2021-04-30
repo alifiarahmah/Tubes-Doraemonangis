@@ -27,10 +27,10 @@ def load(folder_name):
 		return False
 
 def SetInventori(user_id):
-	path = "inventori_" + str(user_id)
-	if not(os.path.exists(path)):
-		f = open(path + ".csv", 'w+')
-		f.write('id_gadget,gadget,jumlah gadget,id_consumable,consumable,jumlah consumable')
+	file = "inventori_" + str(user_id) + ".csv" 
+	if not(os.path.exists(file)):
+		f = open(file, 'w+')
+		f.write('id_gadget,nama_gadget,jumlah_gadget,id_consumable,nama_consumable,jumlah_consumable')
 		f.close()
 	copas(path, "temp_" + path)
 	
