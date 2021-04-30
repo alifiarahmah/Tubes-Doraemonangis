@@ -26,7 +26,7 @@ def load(folder_name):
 		print("Folder tidak ditemukan!")
 		return False
 
-def loadInventori(user_id):
+def load_inventori(user_id):
 	# mempersiapkan file inventori user
 	file = "inventori_" + str(user_id) + ".csv" # nama file inventori
 	if not(os.path.exists(file)):
