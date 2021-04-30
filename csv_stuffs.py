@@ -165,6 +165,21 @@ def saveCSV(header, datas, csv_file):
 	f.write(data_string)
 	f.close()
 
+def getListCSV():
+	# mengembalikan list berisi semua file csv pada Current Working Directory
+	temp = []
+	for (dirpath, dirnames, filenames) in os.walk(os.getcwd()):
+		# membuat list sementara untuk semua file dalam direktori
+		temp.extend(filenames)
+		break
+		
+	ListCSV = []
+	for i in range(len(temp)):
+		# membuat list dari file yang bertipe csv (filter)
+		if (temp[i].rfind('.csv') == (len(temp[i])-4)):
+			ListCSV.append(temp[i])
+	return ListCSV
+		
 # referensi:
 # Tutorial 1 : Read dan Save Data dari CSV tanpa library di python - Mario Gunawan
 # https://13518114.medium.com/tubes-walkthrough-1-read-data-dari-csv-tanpa-library-605a6afe92db
