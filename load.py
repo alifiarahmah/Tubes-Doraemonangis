@@ -30,7 +30,7 @@ def SetInventori(user_id):
 	file = "inventori_" + str(user_id) + ".csv" 
 	if not(os.path.exists(file)):
 		f = open(file, 'w+')
-		f.write('id_gadget,nama_gadget,jumlah_gadget,id_consumable,nama_consumable,jumlah_consumable')
+		f.write('id,nama,jumlah')
 		f.close()
 	copas(path, "temp_" + path)
 	
