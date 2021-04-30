@@ -1,4 +1,5 @@
 import os
+import time
 from load import copas
 from load import setupFile
 
@@ -24,10 +25,12 @@ def nosave():
 
 def save(exit = False):
 	# fungsi save, untuk ditengah program ataupun pada saat exit (jika dipilih yes)
-	ans = str(input("Apakah anda ingin menyimpan perubahan di folder ini? (y/n): "))
+	ans = str(input("Apakah anda ingin menyimpan data di folder saat ini? (y/n): "))
 	ansValid = False
 	while (not(ansValid)): 
 		if (ans == "y") or (ans == "Y") : # penyimpanan di current working directory (cwd)
+			print("Saving...")
+			time.sleep(3) # efek saving...
 			# file lama (_temp) dihapus, file baru menggantikan
 			os.remove("user_temp.csv")
 			os.remove("gadget_temp.csv")
@@ -41,8 +44,11 @@ def save(exit = False):
 				# Dilakukan setupFile seperti pada load, karena ada kemungkinan program masih digunakan setelah save
 				setupFile()
 			
+			print("Data telah disimpan pada folder saat ini!")
 			ansValid = True
 		elif (ans == "n") or (ans == "N") : # penyimpanan di folder/direktori lain
+			print("Saving...")
+			time.sleep(3)
 			# file lama tidak perlu dihapus, file baru dicopy ke folder baru kemudian dihapus pada cwd, nama file lama diganti kembali 
 			# file baru tidak dihapus karena mungkin masih digunakan pada program (jika tidak disave lagi, akan dihapus pada saat exit)
 			folder_name = input("Masukkan nama folder penyimpanan: ")
@@ -65,7 +71,8 @@ def save(exit = False):
 			if (exit):
 				# Dalam kasus ketika exit, file baru (sudah disimpan di folder lain) dihapus dan file lama (_temp) diganti kembali namanya
 				nosave()
-				
+			
+			print("Data telah disimpan pada folder " + folder_name + "!")
 			ansValid = True	
 		else: # jawaban tidak valid
 			ans = str(input("Jawab dengan y(ya) atau n(tidak) !: "))	
