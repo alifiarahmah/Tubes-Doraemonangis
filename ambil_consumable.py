@@ -58,7 +58,10 @@ def ambil_consumable(role):
 
             print("")
             print("Item '" + str(item) + " (x" + str(minta_jumlah) + ")' telah berhasil diambil!")
-
+            
+            # update inventori user
+            addCSVdata("inventori_" + str(user_id) + ".csv", [minta_id, item, str(minta_jumlah)])
+            
             if datas_consumable_history[1] == []: # Saat consumable_history.csv masih kosong
                 history_id = 1
             else: # Saat ada data di consumable_history.csv
