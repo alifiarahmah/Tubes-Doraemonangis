@@ -49,7 +49,7 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 			print()
 			user_input = input(">>> ")
 		
-		setInventori(user_id)
+		loadInventori(user_id)
 		
 		while (user_input != "exit"):
 			if (user_input == "register"): # F01
