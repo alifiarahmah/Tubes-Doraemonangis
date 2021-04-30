@@ -43,7 +43,7 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 			elif (user_input == "help"): # F16
 				help(role)
 			elif (user_input == "exit"): # F17
-				exit()
+				exit(role)
 			else: 
 				print("Silahkan login terlebih dahulu!")
 				
@@ -88,7 +88,7 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 			print()
 			user_input = input(">>> ")
 			
-		exit() # F17
+		exit(role) # F17
 			
 				
 else:	# Gada input argumen untuk nama folder ('')
