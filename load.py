@@ -26,4 +26,12 @@ def load(folder_name):
 		print("Folder tidak ditemukan!")
 		return False
 
+def SetInventori(user_id):
+	path = "inventori_" + str(user_id)
+	if not(os.path.exists(path)):
+		f = open(path + ".csv", 'w+')
+		f.write('id_gadget,gadget,jumlah gadget,id_consumable,consumable,jumlah consumable')
+		f.close()
+	copas(path, "temp_" + path)
+	
 # https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory
