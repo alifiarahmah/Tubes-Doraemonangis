@@ -14,7 +14,7 @@ def nosave():
 	# file lama (temp_) diubah kembali namanya
 	RenameList = getListCSV("only_temp")
 	for i in range(len(RenameList)):	
-		os.rename(RenameList, RemoveList) 
+		os.rename(RenameList[i], RemoveList[i]) 
 	
 	return None
 
