@@ -12,16 +12,16 @@ def register(role): # -> ()
     # Sudah login sebagai Admin
     elif (role == "Admin"):
 
-        reg_nama = input("Masukkan nama: ")
-        reg_username = input("Masukkan username: ")
+        reg_nama = input("Masukkan nama     : ")
+        reg_username = input("Masukkan username : ")
 
         # Validasi username
         if check_regis(reg_username):
             print("Username tidak tersedia.")
             return
         else: 
-            reg_password = input("Masukkan password: ")
-            reg_alamat = input("Masukkan alamat: ")
+            reg_password = input("Masukkan password : ")
+            reg_alamat = input("Masukkan alamat : ")
 
         data = readCSV("user.csv")
         database = data[1]
