@@ -10,8 +10,9 @@ def copas(file_lama, file_baru):
 	f.close()
 
 def setupFile():
-	# Membuat file temp untuk menyimpan file dengan data awal, Program akan bekerja pada file asli
-	# Dalam kasus perubahan tidak di-save, file temp kembali menggantikan file asli (yang mungkin telah dimodif) 
+	# Membuat file temp untuk menyimpan file dengan data awal (temp_namafile.csv), Program akan bekerja pada file dengan nama asli
+	# Ketika perubahan file disave, file dengan nama asli akan tetap ada, file temp akan dihapus
+	# Dalam kasus perubahan tidak di-save, file temp menggantikan kembali file asli (yang mungkin telah diubah sebelumnya) 
 	ListCSV = getListCSV("no_temp")
 	for i in range(len(ListCSV)):
 		copas(ListCSV[i], "temp_" + ListCSV[i]) 
@@ -30,11 +31,11 @@ def load_inventori(user_id):
 	# mempersiapkan file inventori user
 	file_name = "inventori_" + str(user_id) + ".csv" # nama file inventori
 	if not(os.path.exists(file_name)):
-		# kalau file inventori user belum ada, dibuat dulu
+		# Jika file inventori user belum ada, akan dibuat dulu
 		f = open(file_name, 'w+')
-		f.write('id;nama;jumlah')
+		f.write('id;nama;rarity;jumlah')
 		f.close()
 	# bikin file temp, seperti pada file lain saat load
 	copas(file_name, "temp_" + file_name)
 	
-# https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory
+

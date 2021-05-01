@@ -91,7 +91,7 @@ def lenCol(csv_file):
 	elif (csv_file == "consumable_history.csv") | (csv_file == "gadget_return_history.csv"):
 		return 4
 	else:
-		return 3
+		return 4
 
 
 # FUNGSI PANGGILABLE BUAT GAMPANGIN AJA
@@ -199,3 +199,4 @@ def getListCSV(cond):
 # referensi:
 # Tutorial 1 : Read dan Save Data dari CSV tanpa library di python - Mario Gunawan
 # https://13518114.medium.com/tubes-walkthrough-1-read-data-dari-csv-tanpa-library-605a6afe92db
+# https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory (getListCSV)

@@ -16,7 +16,6 @@ def exit(role):
 
 	if ((ans == 'y') or (ans == 'Y')):
 		save(True) # nilai True diperlukan khusus untuk penyimpanan ketika exit (lihat file save.py)
-		print("Perubahan file telah disimpan, Terima Kasih!")
 	else: # ((ans == 'n') or (ans == 'N'))
 		nosave()
 		print("Terima kasih!")	
