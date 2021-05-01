@@ -39,7 +39,7 @@ def save(exit = False): # Jika tidak ada argumen, nilai default exit = False
 		# kalau gada perubahan yang perlu disimpan
 		if (exit):
 			nosave()
-			print("Tidak ada perubahan yang perlu disimpan, terima kasih!"))
+			print("Tidak ada perubahan yang perlu disimpan, terima kasih!")
 		else:
 			print("Tidak ada perubahan yang perlu disimpan!")
 		return None
