@@ -28,14 +28,13 @@ def load(folder_name):
 		return False
 
 def load_inventori(user_id):
-	# mempersiapkan file inventori user
-	file_name = "inventori_" + str(user_id) + ".csv" # nama file inventori
+	# membuat file inventori untuk user jika belum ada
+	file_name = "inventori_" + str(user_id) + ".csv" # nama file inventori, hanya mengandung id user
 	if not(os.path.exists(file_name)):
-		# Jika file inventori user belum ada, akan dibuat dulu
 		f = open(file_name, 'w+')
 		f.write('id;nama;rarity;jumlah')
 		f.close()
-	# bikin file temp, seperti pada file lain saat load
-	copas(file_name, "temp_" + file_name)
+		# bikin file temp, seperti pada file lain saat load
+		copas(file_name, "temp_" + file_name)
 	
 
