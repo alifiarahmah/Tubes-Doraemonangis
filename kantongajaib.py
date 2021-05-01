@@ -19,6 +19,7 @@ from kembalikan import kembalikan
 from ambil_consumable import ambil_consumable
 from lihat_riwayat_gadget import lihat_riwayat_pinjam_gadget, lihat_riwayat_kembalikan_gadget
 from lihat_riwayat_consumable import lihat_riwayat_consumable
+from gacha import gacha
 
 parser = argparse.ArgumentParser()						  #
 parser.add_argument("Direktori", nargs='?', default='')	  #   Bagian awal program
@@ -82,7 +83,8 @@ if (args.Direktori != ''):		# ada input argumen untuk nama folder (tidak kosong)
 				save()
 			elif (user_input == "help"): # F16
 				help(role)
-			
+			elif (user_input == "gacha"): # FB03
+				gacha(role, user_id)
 			else:
 				print("Perintah tidak valid! (Lihat 'help' untuk melihat list perintah)")
 			
