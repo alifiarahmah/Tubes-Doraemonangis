@@ -71,13 +71,13 @@ def save(exit = False): # Jika tidak ada argumen, nilai default exit = False
 			folder_name = input("Masukkan nama folder penyimpanan: ")
 			dir_save = os.path.dirname(os.path.abspath(__file__)) + "\\" + folder_name # direktori tujuan
 			
-			print("Saving...")
-			time.sleep(3)
-			
 			if not(os.path.exists(dir_save)):
 				# Jika foldernya belum ada, dibuat dulu foldernya
 				print("Folder belum ada, akan dibuat folder baru")
 				os.mkdir(dir_save) # foldernya dibuat
+				
+			print("Saving...")
+			time.sleep(3)
 				
 			# path file tujuan = dir_save + "\\" + CopasList[i]
 			# copas ke path tujuan
