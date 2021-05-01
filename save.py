@@ -37,7 +37,11 @@ def save(exit = False): # Jika tidak ada argumen, nilai default exit = False
 	# fungsi save, untuk ditengah program ataupun pada saat exit (jika dipilih yes)
 	if upToDate():
 		# kalau gada perubahan yang perlu disimpan
-		print("Tidak ada perubahan yang perlu disimpan!")
+		if (exit):
+			nosave()
+			print("Tidak ada perubahan yang perlu disimpan, terima kasih!"))
+		else:
+			print("Tidak ada perubahan yang perlu disimpan!")
 		return None
 	
 	ans = str(input("Apakah anda ingin menyimpan data di folder saat ini? (y/n): "))
