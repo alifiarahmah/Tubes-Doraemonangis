@@ -91,7 +91,7 @@ def lenCol(csv_file):
 	elif (csv_file == "consumable_history.csv") | (csv_file == "gadget_return_history.csv"):
 		return 4
 	else:
-		return 3
+		return 4
 
 
 # FUNGSI PANGGILABLE BUAT GAMPANGIN AJA

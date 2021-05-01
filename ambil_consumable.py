@@ -64,10 +64,11 @@ def ambil_consumable(role, user_id):
             inventori = "inventori_" + str(user_id) + ".csv"
             idx = getRow(inventori, minta_id)
             if idx != None: # ID item ada di inventori
-                new_val = int(readCSVdata(inventori, idx, 2)) + minta_jumlah    # jumlah consumable ditambah	
-                editCSVdata(inventori, idx, 2, str(new_val))   # diedit filenya dengan jumlah baru
+                new_val = int(readCSVdata(inventori, idx, 3)) + minta_jumlah    # jumlah consumable ditambah	
+                editCSVdata(inventori, idx, 3, str(new_val))   # diedit jumlahnya pada inventori
             else:   # ID item tidak ada di inventori
-                addCSVdata(inventori, [minta_id, item, str(minta_jumlah)])		
+                rarity = readCSVdata("consumable.csv", getRow("consumable.csv", minta_id), 4) 
+                addCSVdata(inventori, [minta_id, item, rarity, str(minta_jumlah)])	# ditambahkan ke dalam inventori		
 		
             if datas_consumable_history[1] == []: # Saat consumable_history.csv masih kosong
                 history_id = 1

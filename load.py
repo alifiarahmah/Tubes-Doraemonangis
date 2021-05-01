@@ -32,7 +32,7 @@ def load_inventori(user_id):
 	if not(os.path.exists(file_name)):
 		# kalau file inventori user belum ada, dibuat dulu
 		f = open(file_name, 'w+')
-		f.write('id;nama;jumlah')
+		f.write('id;nama;rarity;jumlah')
 		f.close()
 	# bikin file temp, seperti pada file lain saat load
 	copas(file_name, "temp_" + file_name)

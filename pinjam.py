@@ -44,7 +44,8 @@ def pinjam(role, user_id):
 								addCSVdata("gadget_borrow_history.csv", [id, user_id, item_id, tgl, jml_pinjam, 0])
 								
 								# catat ke inventory user
-								addCSVdata("inventori_" + str(user_id) + ".csv", [item_id, item, str(jml_pinjam)])
+								rarity = readCSVdata("gadget.csv", getRow("gadget.csv", item_id), 4)
+								addCSVdata("inventori_" + str(user_id) + ".csv", [item_id, item, rarity, str(jml_pinjam)])
 								
 								print("Item", item, "(x" + str(jml_pinjam) + ")", "berhasil dipinjam!\n")
 
