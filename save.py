@@ -6,12 +6,12 @@ from load import setupFile
 
 def nosave():
 	# nosave, dipakai ketika tidak dilakukan penyimpanan di CWD pada saat exit
-	# semua file baru dihapus (bisa jadi disave di folder lain sebelumnya)
+	# semua file dengan nama asli (tanpa temp_) dihapus (bisa jadi disave di folder lain sebelumnya)
 	RemoveList = getListCSV("no_temp")
 	for i in range(len(RemoveList)):	
 		os.remove(RemoveList[i]) 
 	
-	# file lama (temp_) diubah kembali namanya
+	# file lama (temp_) diubah kembali namanya menggantikan file sebelumnya
 	RenameList = getListCSV("only_temp")
 	for i in range(len(RenameList)):	
 		os.rename(RenameList[i], RemoveList[i]) 
@@ -19,13 +19,13 @@ def nosave():
 	return None
 
 def upToDate():
-	# ngecek apakah file up to date (perlu disave atau engga)
+	# Pengecekan apakah file up to date (perlu disave atau tidak)
 	CSV = getListCSV("no_temp")
 	Temp_CSV = getListCSV("only_temp")
 	for i in range(len(CSV)): # ukurannya sama
-		f = open(CSV[i], 'r')
-		g = open(Temp_CSV[i], 'r')
-		if (f.read() != g.read()):
+		f = open(CSV[i], 'r')		# file f dan g pasti akan saling bersesuaian, karena nama file g hanya ditambah temp_ pada awalannya
+		g = open(Temp_CSV[i], 'r')	# sehingga urutannya akan sama (getListCSV mengembalikan list csv yang berurutan sesuai alfabet)
+		if (f.read() != g.read()): # file dicek satu per satu
 			f.close()
 			g.close()
 			return False # ada yg ga up to date
@@ -33,7 +33,7 @@ def upToDate():
 		g.close()
 	return True # semua file up to date
 
-def save(exit = False):
+def save(exit = False): # Jika tidak ada argumen, nilai default exit = False
 	# fungsi save, untuk ditengah program ataupun pada saat exit (jika dipilih yes)
 	if upToDate():
 		# kalau gada perubahan yang perlu disimpan
@@ -41,7 +41,7 @@ def save(exit = False):
 		return None
 	
 	ans = str(input("Apakah anda ingin menyimpan data di folder saat ini? (y/n): "))
-	ansValid = False
+	ansValid = False # untuk Validasi input
 	while (not(ansValid)): 
 		if (ans == "y") or (ans == "Y") : # penyimpanan di current working directory (cwd)
 			print("Saving...")
@@ -86,7 +86,7 @@ def save(exit = False):
 				# Dalam kasus ketika exit, file baru (sudah disimpan di folder lain) dihapus dan file lama (_temp) diganti kembali namanya
 				nosave() # -dilakukan di nosave
 				print("Perubahan file telah disimpan pada folder " + folder_name + ", terima kasih!")
-			else: # not exit
+			else: # Tidak saat exit
 				print("Perubahan file telah disimpan pada folder " + folder_name + "!")
 				
 			ansValid = True	
