@@ -199,3 +199,4 @@ def getListCSV(cond):
 # referensi:
 # Tutorial 1 : Read dan Save Data dari CSV tanpa library di python - Mario Gunawan
 # https://13518114.medium.com/tubes-walkthrough-1-read-data-dari-csv-tanpa-library-605a6afe92db
+# https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory (getListCSV)
