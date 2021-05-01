@@ -5,8 +5,12 @@ def cari_gadget_rarity(): # Menampilkan gadget berdasarkan rarity
     datas_gadget = readCSV("gadget.csv")
     
     input_rarity = str(input("Masukkan rarity: "))
-    print("")
-    print("Hasil pencarian:")
-    print("")
+    
+    if (input_rarity not in 'CBAS'):
+        print("Rarity tidak valid!")
+    else:
+        print("")
+        print("Hasil pencarian:")
+        print("")
                            
-    print_gadget_rarity(datas_gadget, input_rarity)
+        print_gadget_rarity(datas_gadget, input_rarity)
