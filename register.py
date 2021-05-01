@@ -21,7 +21,7 @@ def register(role): # -> ()
             return
         else: 
             reg_password = input("Masukkan password : ")
-            reg_alamat = input("Masukkan alamat : ")
+            reg_alamat = input("Masukkan alamat     : ")
 
         data = readCSV("user.csv")
         database = data[1]
