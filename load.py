@@ -10,9 +10,9 @@ def copas(file_lama, file_baru):
 	f.close()
 
 def setupFile():
-	# Membuat file temp untuk menyimpan file dengan data awal (temp_namafile.csv), Program akan bekerja pada file dengan nama asli
-	# Ketika perubahan file disave, file dengan nama asli akan tetap ada, file temp akan dihapus
-	# Dalam kasus perubahan tidak di-save, file temp menggantikan kembali file asli (yang mungkin telah diubah sebelumnya) 
+	# Membuat file temp untuk menyimpan file dengan data awal (temp_namafile.csv), Program akan bekerja pada file dengan nama asli (default)
+	# Ketika perubahan file disave, file default akan tetap ada, file temp akan dihapus
+	# Dalam kasus perubahan tidak di-save, file temp menggantikan kembali file default (yang mungkin telah diubah sebelumnya) 
 	ListCSV = getListCSV("no_temp") # List semua file csv non temp_
 	for i in range(len(ListCSV)):
 		copas(ListCSV[i], "temp_" + ListCSV[i]) # dibuat duplikatnya (temp) satu per satu 
