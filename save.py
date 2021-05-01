@@ -6,8 +6,8 @@ from load import setupFile
 
 def nosave():
 	# nosave, dipakai ketika tidak dilakukan penyimpanan di CWD pada saat exit
-	# semua file dengan nama asli (tanpa temp_) dihapus (bisa jadi disave di folder lain sebelumnya)
-	RemoveList = getListCSV("no_temp")
+	# semua file dengan nama default (tanpa temp_) dihapus (bisa jadi disave di folder lain sebelumnya)
+	RemoveList = getListCSV("no_temp")	# List semua file dengan nama default
 	for i in range(len(RemoveList)):	
 		os.remove(RemoveList[i]) 
 	
@@ -46,7 +46,7 @@ def save(exit = False): # Jika tidak ada argumen, nilai default exit = False
 		if (ans == "y") or (ans == "Y") : # penyimpanan di current working directory (cwd)
 			print("Saving...")
 			time.sleep(3) # efek saving...
-			# file lama (_temp) dihapus, file baru menggantikan
+			# file temp dihapus, file default menggantikan
 			RemoveList = getListCSV("only_temp")
 			for i in range(len(RemoveList)):	
 				os.remove(RemoveList[i]) 	
@@ -62,8 +62,8 @@ def save(exit = False): # Jika tidak ada argumen, nilai default exit = False
 			ansValid = True
 		elif (ans == "n") or (ans == "N") : # penyimpanan di folder/direktori lain
 			
-			# file lama tidak perlu dihapus, file baru dicopy ke folder baru kemudian dihapus pada cwd, nama file lama diganti kembali 
-			# file baru tidak dihapus karena mungkin masih digunakan pada program (jika tidak disave lagi, akan dihapus pada saat exit)
+			# file lama tidak perlu dihapus, file default dicopy ke folder baru kemudian dihapus pada cwd, nama file lama diganti kembali 
+			# file default tidak dihapus karena mungkin masih digunakan pada program (jika tidak disave lagi, akan dihapus pada saat exit)
 			folder_name = input("Masukkan nama folder penyimpanan: ")
 			dir_save = os.path.dirname(os.path.abspath(__file__)) + "\\" + folder_name # direktori tujuan
 			
@@ -83,7 +83,7 @@ def save(exit = False): # Jika tidak ada argumen, nilai default exit = False
 			
 			
 			if (exit):
-				# Dalam kasus ketika exit, file baru (sudah disimpan di folder lain) dihapus dan file lama (_temp) diganti kembali namanya
+				# Dalam kasus ketika exit, file default (sudah disimpan di folder lain) dihapus dan file temp diganti kembali namanya
 				nosave() # -dilakukan di nosave
 				print("Perubahan file telah disimpan pada folder " + folder_name + ", terima kasih!")
 			else: # Tidak saat exit
