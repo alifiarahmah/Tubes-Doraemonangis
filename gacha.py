@@ -15,21 +15,53 @@ def prng(): # -> real
 
 def chooser(arr):
 	# choose an element from array by prng approach
-	kocokan = prng()
-	bobot_elmt = 100 / len(arr)
-	i = 1
-	for elmt in arr:
-		if kocokan <= bobot_elmt * i:
-			return elmt
-		else:
-			i += 1
+	if len(arr) > 0:
+		kocokan = prng()
+		bobot_elmt = 100 / len(arr)
+		i = 1
+		for elmt in arr:
+			if kocokan <= bobot_elmt * i:
+				return elmt
+			else:
+				i += 1
+	return None
 
 def numchooser(n):
 	# memilih bilangan dari 1 sampai n
-	numlist = []
-	for i in range(1, n+1):
-		numlist.append(i)
-	return chooser(numlist)
+	if n > 0:
+		numlist = []
+		for i in range(1, n+1):
+			numlist.append(i)
+		return chooser(numlist)
+	else:
+		return 0
+
+def raritychooser(rarity):
+	# pilih rarity, yang banyak-sedikit chancenya ditentukan persentase
+	max1 = int(max([rarity[0][1], rarity[2][1], rarity[1][1]]))
+	if max1 == rarity[0][1]:
+		max2 = int(max([rarity[1][1], rarity[2][1]]))
+		max3 = int(min([rarity[1][1], rarity[2][1]]))
+	elif max1 == rarity[2][1]:
+		max2 = int(max([rarity[0][1], rarity[1][1]]))
+		max3 = int(min([rarity[0][1], rarity[1][1]]))
+	else:
+		max2 = int(max([rarity[0][1], rarity[2][1]]))
+		max3 = int(min([rarity[0][1], rarity[2][1]]))
+
+	arr = ['C']
+	for i in range(len(rarity)):
+		if rarity[i][1] == max1:
+			for j in range(4):
+				arr.append(rarity[i][0])
+		elif rarity[i][1] == max2:
+			for j in range(3):
+				arr.append(rarity[i][0])
+		else:
+			for j in range(2):
+				arr.append(rarity[i][0])
+	
+	return chooser(arr)
 
 def nextrarity(rarity):
 	if rarity == 'C':
@@ -136,13 +168,16 @@ def gacha(role, user_id):
 			print("\nRolling...")
 			time.sleep(2)
 
-			rarity_result = chooser(['C', 'B', 'A', 'S'])
+			rarity_result = raritychooser(rarity)
 			gacha_result = chooser(searchrarity(rarity_result))
 
 			stok_database = int(readCSVdata("consumable.csv", getRow("consumable.csv", gacha_result[0]), getCol("consumable.csv", "jumlah")))
 			jml_result = numchooser(stok_database)
 
-			print("Selamat, anda mendapatkan", jml_result, gacha_result[1], "(Rank " + rarity_result + ")!")
+			if jml_result > 0:
+				print("Selamat, anda mendapatkan", jml_result, gacha_result[1], "(Rank " + rarity_result + ")!")
+			else:
+				print("Maaf, anda sedang tidak beruntung. Coba lagi.")
 
 			# ubahjumlah di consumable.csv
 			editCSVdata("consumable.csv", getRow("consumable.csv", gacha_result[0]), getCol("consumable.csv", "jumlah"), stok_database-jml_result)
