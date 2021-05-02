@@ -146,7 +146,9 @@ def korbaninitem(user_id, inventory): # -> array[1..2] of  any
 	# Menerima item yang dipilih user dan mengembalikan chance rarity di atas rarity item yang dipilih
 	
 	# KAMUS LOKAL
-	# num : 
+	# num, stok, jml: integer
+	# item_id, item_name, item_rarity, item_numambil: string
+	# chance: real
 
 	# ALGORITMA
 
