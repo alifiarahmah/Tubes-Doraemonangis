@@ -1,4 +1,4 @@
-from csv_stuffs import readCSV
+from csv_stuffs import readCSV, readCSVdata, getRow, getCol
 from tgl import sort_data_date, sort_data_date_1
 
 # Melihat Riwayat Peminjaman Gadget
@@ -16,7 +16,8 @@ def lihat_riwayat_pinjam_gadget(role): # Melihat riwayat pengambilan consumable
             if len(datas_gadget_borrow_history[1]) <= 5: # saat data <= 5
                 for i in range(len(datas_gadget_borrow_history[1])):
                     print("ID Peminjaman       : " + str(datas_gadget_borrow_history[1][i][0]))
-                    print("Nama Peminjam       : " + str(datas_gadget_borrow_history[1][i][1]))
+                    nama = readCSVdata("user.csv", getRow("user.csv", int(datas_gadget_borrow_history[1][i][1])), 2)
+                    print("Nama Peminjam       : " + nama)
                     for j in range(len(datas_gadget[1])):
                         if datas_gadget_borrow_history[1][i][2] == datas_gadget[1][j][0]:
                             print("Nama Gadget         : " + str(datas_gadget[1][j][1]))
@@ -27,7 +28,8 @@ def lihat_riwayat_pinjam_gadget(role): # Melihat riwayat pengambilan consumable
                 idx = 0
                 while idx < 5:
                     print("ID Peminjaman       : " + str(datas_gadget_borrow_history[1][idx][0]))
-                    print("Nama Peminjam       : " + str(datas_gadget_borrow_history[1][idx][1]))
+                    nama = readCSVdata("user.csv", getRow("user.csv", int(datas_gadget_borrow_history[1][idx][1])), 2)
+                    print("Nama Peminjam       : " + nama)
                     for j in range(len(datas_gadget[1])):
                         if datas_gadget_borrow_history[1][idx][2] == datas_gadget[1][j][0]:
                             print("Nama Gadget         : " + str(datas_gadget[1][j][1]))
@@ -61,7 +63,9 @@ def lihat_riwayat_kembalikan_gadget(role): # Melihat riwayat pengambilan consuma
                     for j in range(len(datas_gadget_borrow_history[1])):
                         if datas_gadget_return_history[1][i][1] == datas_gadget_borrow_history[1][j][0]:
                             # Menampilkan nama Pengambil
-                            print("Nama Pengambil         : " + str(datas_gadget_borrow_history[1][j][1]))
+                            nama = readCSVdata("user.csv", getRow("user.csv", int(datas_gadget_borrow_history[1][j][1])), 2)
+                            print("Nama Pengambil         : " + nama)
+                            #print("Nama Pengambil         : " + str(datas_gadget_borrow_history[1][j][1]))
 
                     for k in range(len(datas_gadget_borrow_history[1])):
                         if datas_gadget_return_history[1][i][1] == datas_gadget_borrow_history[1][k][0]:
@@ -84,7 +88,9 @@ def lihat_riwayat_kembalikan_gadget(role): # Melihat riwayat pengambilan consuma
                     for j in range(len(datas_gadget_borrow_history[1])):
                         if datas_gadget_return_history[1][idx][1] == datas_gadget_borrow_history[1][j][0]:
                             # Menampilkan nama Pengambil
-                            print("Nama Pengambil        : " + str(datas_gadget_borrow_history[1][j][1]))
+                            nama = readCSVdata("user.csv", getRow("user.csv", int(datas_gadget_borrow_history[1][j][1])), 2)
+                            print("Nama Pengambil        : " + nama)
+                            #print("Nama Pengambil        : " + str(datas_gadget_borrow_history[1][j][1]))
 
                     for k in range(len(datas_gadget_borrow_history[1])):
                         if datas_gadget_return_history[1][idx][1] == datas_gadget_borrow_history[1][k][0]:
