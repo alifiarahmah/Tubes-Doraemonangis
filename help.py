@@ -22,6 +22,7 @@ def help(role):
         print("pinjam       : Untuk melakukan peminjaman gadget.")
         print("kembalikan   : Untuk melakukan pengembalian gadget.")
         print("minta        : Untuk meminta consumable yang tersedia.")
+        print("gacha        : Untuk melakukan gacha dengan consumable.")
         print("save         : Untuk menyimpan perubahan data.")
         print("help         : Untuk memberikan panduan penggunaan sistem.")
         print("exit         : Untuk keluar dari aplikasi.")    
